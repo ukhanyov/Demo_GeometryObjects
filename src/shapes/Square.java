@@ -28,6 +28,16 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         mDiagonal = mSide * Math.sqrt(2);
     }
 
+    @Override
+    public String toString() {
+        return "Square with following parameters:" + "\n" +
+                "Color: " + getmColor() + "\n" +
+                "Side: " + getmSide() + "\n" +
+                "Calculated Diagonal = " + getmDiagonal() + "\n" +
+                "Calculated perimeter = " + getmPerimeter() + "\n" +
+                "Calculated area = " + getmArea();
+    }
+
     public void makeCalculations(){
         calculateDiagonal();
         calculatePerimeter();

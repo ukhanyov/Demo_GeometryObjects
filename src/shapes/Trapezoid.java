@@ -47,6 +47,17 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         calculateArea();
     }
 
+    @Override
+    public String toString() {
+        return "Trapezoid with following parameters:" + "\n" +
+                "Color: " + getmColor() + "\n" +
+                "Base: " + getmBigBase() + "; Top: " + getmSmallBase() +
+                "; Left side: " + getmLeftSide() + "; Right side: " + getmRightSide() + "\n" +
+                "Calculated Height = " + getmHeight() + "\n" +
+                "Calculated Perimeter = " + getmPerimeter() + "\n" +
+                "Calculated Prea = " + getmArea();
+    }
+
     public void areTheNumbersRigth(){
 
     }

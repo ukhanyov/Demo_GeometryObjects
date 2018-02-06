@@ -62,6 +62,16 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         calculateArea();
     }
 
+    @Override
+    public String toString() {
+        return "Triangle with following parameters:" + "\n" +
+                "Color: " + getmColor() + "\n" +
+                "Base: " + getmBase() + "; First Cathetus: " + getmCathetusOne() +
+                "; Second Cathetus: " + getmCathetusTwo() + "\n" +
+                "Calculated perimeter = " + getmPerimeter() + "\n" +
+                "Calculated area = " + getmArea();
+    }
+
     public String areTheNumbersRigth(){
         if (mBase >= mCathetusOne + mCathetusTwo){
             return "In given triangle is not valid triangle inequality";

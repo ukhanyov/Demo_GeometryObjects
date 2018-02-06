@@ -31,6 +31,16 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         calculateArea();
     }
 
+    @Override
+    public String toString() {
+        return "Circle with following parameters:" + "\n" +
+                "Color: " + getmColor() + "\n" +
+                "Radius: " + getmRadius() +  "\n" +
+                "Diameter: " + getmDiameter()+  "\n" +
+                "Calculated Area = " + getmArea() + "\n" +
+                "Calculated Length Of Circumference = " + getmLengthOfCircumference();
+    }
+
     public void areTheNumbersRigth(){
 
     }
