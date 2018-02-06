@@ -1,24 +1,24 @@
 public class GeometryObject {
 
-    private String color;
-    private double area;
+    public String mColor;
+    public double mArea;
 
-    private GeometryObject() {
+    public GeometryObject() {
     }
 
-    public String getColor() {
-        return color;
+    public String getmColor() {
+        return mColor;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setmColor(String mColor) {
+        this.mColor = mColor;
     }
 
-    public double getArea() {
-        return area;
+    public double getmArea() {
+        return mArea;
     }
 
-    public void setArea(double area) {
-        this.area = area;
+    public void setmArea(double mArea) {
+        this.mArea = mArea;
     }
 }
