@@ -13,6 +13,9 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mColor = color;
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
+
+        areTheNumbersRight();
+        makeCalculations();
     }
 
     @Override

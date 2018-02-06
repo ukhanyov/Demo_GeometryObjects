@@ -19,6 +19,9 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mSmallBase = mSmallBase;
         this.mLeftSide = mLeftSide;
         this.mRightSide = mRightSide;
+
+        areTheNumbersRight();
+        makeCalculations();
     }
 
     @Override
@@ -55,7 +58,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
                 "; Left side: " + getmLeftSide() + "; Right side: " + getmRightSide() + "\n" +
                 "Calculated Height = " + getmHeight() + "\n" +
                 "Calculated Perimeter = " + getmPerimeter() + "\n" +
-                "Calculated Prea = " + getmArea();
+                "Calculated Area = " + getmArea();
     }
 
     public void areTheNumbersRight(){

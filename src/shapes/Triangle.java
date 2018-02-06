@@ -9,8 +9,6 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     private double mSideC;
 
     private double mBase;
-    private double mCathetusOne;
-    private double mCathetusTwo;
 
     private double mPerimeter;
 
@@ -21,38 +19,23 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideB = mSideB;
         this.mSideC = mSideC;
 
-        findTheBase();
-    }
+        identifyBase();
 
-    private void findTheBase() {
-        if(Double.compare(mSideA, mSideB) > 0 && Double.compare(mSideA, mSideC) > 0){
-            setmBase(mSideA);
-            setmCathetusOne(mSideB);
-            setmCathetusTwo(mSideC);
-            return;
-        }
-        if(Double.compare(mSideB, mSideA) > 0 && Double.compare(mSideB, mSideC) > 0){
-            setmBase(mSideB);
-            setmCathetusOne(mSideA);
-            setmCathetusTwo(mSideC);
-            return;
-        }
-        setmBase(mSideC);
-        setmCathetusOne(mSideA);
-        setmCathetusTwo(mSideB);
+        areTheNumbersRight();
+        makeCalculations();
     }
 
     @Override
     public void calculatePerimeter() {
-        mPerimeter = mBase + mCathetusOne + mCathetusTwo;
+        mPerimeter = mSideA + mSideB + mSideC;
     }
 
     @Override
     public void calculateArea() {
-        double halfPerimeter = (mBase + mCathetusOne + mCathetusTwo) / 2;
-        mArea = Math.sqrt(halfPerimeter * (halfPerimeter - mBase) *
-                                            (halfPerimeter - mCathetusOne) *
-                                            (halfPerimeter - mCathetusTwo));
+        double halfPerimeter = (mSideA + mSideB + mSideC) / 2;
+        mArea = Math.sqrt(halfPerimeter * (halfPerimeter - mSideA) *
+                                            (halfPerimeter - mSideB) *
+                                            (halfPerimeter - mSideC));
     }
 
 
@@ -66,30 +49,51 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     public String toString() {
         return "Triangle with following parameters:" + "\n" +
                 "Color: " + getmColor() + "\n" +
-                "Base: " + getmBase() + "; First Cathetus: " + getmCathetusOne() +
-                "; Second Cathetus: " + getmCathetusTwo() + "\n" +
-                "Calculated perimeter = " + getmPerimeter() + "\n" +
-                "Calculated area = " + getmArea();
+                "Side A: " + getmSideA() + "; Side B: " + getmSideB() +
+                "; Side C: " + getmSideC() + "\n" +
+                "Calculated Perimeter = " + getmPerimeter() + "\n" +
+                "Calculated Area = " + getmArea() + "\n" +
+                "Triangle's Base: " + getmBase();
     }
 
     public void areTheNumbersRight(){
 
-        if (mBase >= mCathetusOne + mCathetusTwo){
+        if(mSideA + mSideB <= mSideC){
             throw new IllegalArgumentException();
         }
 
-        if(mBase <= 0){
+        if(mSideA + mSideC <= mSideB){
             throw new IllegalArgumentException();
         }
 
-        if(mCathetusOne <= 0){
+        if(mSideC + mSideB <= mSideA){
             throw new IllegalArgumentException();
         }
 
-        if(mCathetusTwo <= 0){
+        if(mSideA <= 0){
             throw new IllegalArgumentException();
         }
 
+        if(mSideB <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mSideC <= 0){
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    private void identifyBase(){
+        if(mSideA > mSideB && mSideA > mSideC){
+            mBase = mSideA;
+        } else {
+            if(mSideB > mSideA && mSideB > mSideC){
+                mBase = mSideB;
+            }else {
+                mBase = mSideC;
+            }
+        }
     }
 
     public double getmSideA() {
@@ -116,32 +120,16 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideC = mSideC;
     }
 
+    public double getmPerimeter() {
+        return mPerimeter;
+    }
+
     public double getmBase() {
         return mBase;
     }
 
     protected void setmBase(double mBase) {
         this.mBase = mBase;
-    }
-
-    public double getmCathetusOne() {
-        return mCathetusOne;
-    }
-
-    protected void setmCathetusOne(double mCathetusOne) {
-        this.mCathetusOne = mCathetusOne;
-    }
-
-    public double getmCathetusTwo() {
-        return mCathetusTwo;
-    }
-
-    protected void setmCathetusTwo(double mCathetusTwo) {
-        this.mCathetusTwo = mCathetusTwo;
-    }
-
-    public double getmPerimeter() {
-        return mPerimeter;
     }
 
     protected void setmPerimeter(double mPerimeter) {

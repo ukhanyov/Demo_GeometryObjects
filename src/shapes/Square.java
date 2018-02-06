@@ -11,6 +11,9 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     public Square(double side, String color) {
         this.mSide = side;
         this.mColor = color;
+
+        areTheNumbersRight();
+        makeCalculations();
     }
 
     @Override
@@ -34,8 +37,8 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
                 "Color: " + getmColor() + "\n" +
                 "Side: " + getmSide() + "\n" +
                 "Calculated Diagonal = " + getmDiagonal() + "\n" +
-                "Calculated perimeter = " + getmPerimeter() + "\n" +
-                "Calculated area = " + getmArea();
+                "Calculated Perimeter = " + getmPerimeter() + "\n" +
+                "Calculated Area = " + getmArea();
     }
 
     public void makeCalculations(){
