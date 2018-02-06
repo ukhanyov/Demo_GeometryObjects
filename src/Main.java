@@ -1,3 +1,4 @@
+import shapes.Circle;
 import shapes.Square;
 import shapes.Triangle;
 import utils.Colors;
@@ -16,12 +17,21 @@ public class Main {
 
         Triangle triangle = new Triangle(5, 9, 7, Colors.COLOR_RED.toString());
         triangle.makeCalculations();
-        System.out.println(triangle.getmBase() + "\n" +
-                            triangle.getmCathetusOne() + "\n" +
-                            triangle.getmCathetusTwo() + "\n" +
-                            triangle.getmColor() + "\n" +
-                            triangle.getmPerimeter() + "\n" +
-                            triangle.getmArea());
+//        System.out.println(triangle.getmBase() + "\n" +
+//                            triangle.getmCathetusOne() + "\n" +
+//                            triangle.getmCathetusTwo() + "\n" +
+//                            triangle.getmColor() + "\n" +
+//                            triangle.getmPerimeter() + "\n" +
+//                            triangle.getmArea());
+
+        Circle circle = new Circle(12, Colors.COLOR_BLUE.toString());
+        circle.makeCalculations();
+        System.out.println(circle.getmRadius() + "\n" +
+                            circle.getmDiameter() + "\n" +
+                            circle.getmColor() + "\n" +
+                            circle.getmLengthOfCircumference() + "\n" +
+                            circle.getmArea());
+
     }
 
 }
