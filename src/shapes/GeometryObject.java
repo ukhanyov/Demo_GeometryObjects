@@ -1,7 +1,9 @@
+package shapes;
+
 public class GeometryObject {
 
-    public String mColor;
-    public double mArea;
+    protected String mColor;
+    protected double mArea;
 
     public GeometryObject() {
     }

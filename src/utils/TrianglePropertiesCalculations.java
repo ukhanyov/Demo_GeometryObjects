@@ -1,12 +1,10 @@
 package utils;
 
-public interface SquarePropertiesCalculations {
+public interface TrianglePropertiesCalculations {
 
     void calculatePerimeter();
 
     void calculateArea();
-
-    void calculateDiagonal();
 
     void makeCalculations();
 }

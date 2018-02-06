@@ -1,3 +1,5 @@
+package shapes;
+
 import utils.SquarePropertiesCalculations;
 
 public class Square extends GeometryObject implements SquarePropertiesCalculations {
@@ -6,10 +8,9 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     private double mDiagonal;
     private double mPerimeter;
 
-    Square(double side, String color) {
-        super();
-        mSide = side;
-        mColor = color;
+    public Square(double side, String color) {
+        this.mSide = side;
+        this.mColor = color;
     }
 
     public double getmSide() {
