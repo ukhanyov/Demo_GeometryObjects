@@ -44,8 +44,10 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         calculateArea();
     }
 
-    public void areTheNumbersRigth(){
-
+    public void areTheNumbersRight(){
+        if(mSide <= 0){
+            throw new IllegalArgumentException();
+        }
     }
 
     public double getmSide() {

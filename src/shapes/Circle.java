@@ -41,8 +41,10 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
                 "Calculated Length Of Circumference = " + getmLengthOfCircumference();
     }
 
-    public void areTheNumbersRigth(){
-
+    public void areTheNumbersRight(){
+        if(mRadius <= 0){
+            throw new IllegalArgumentException();
+        }
     }
 
     public double getmRadius() {

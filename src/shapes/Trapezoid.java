@@ -58,8 +58,28 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
                 "Calculated Prea = " + getmArea();
     }
 
-    public void areTheNumbersRigth(){
+    public void areTheNumbersRight(){
+        if(mBigBase < mSmallBase ||
+                mBigBase < mLeftSide ||
+                mBigBase < mRightSide){
+            throw new IllegalArgumentException();
+        }
 
+        if(mBigBase <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mSmallBase <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mLeftSide <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mRightSide <= 0){
+            throw new IllegalArgumentException();
+        }
     }
 
     public double getmBigBase() {

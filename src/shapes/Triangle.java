@@ -72,11 +72,24 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
                 "Calculated area = " + getmArea();
     }
 
-    public String areTheNumbersRigth(){
+    public void areTheNumbersRight(){
+
         if (mBase >= mCathetusOne + mCathetusTwo){
-            return "In given triangle is not valid triangle inequality";
+            throw new IllegalArgumentException();
         }
-        return null;
+
+        if(mBase <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mCathetusOne <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        if(mCathetusTwo <= 0){
+            throw new IllegalArgumentException();
+        }
+
     }
 
     public double getmSideA() {
