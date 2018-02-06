@@ -1,12 +1,12 @@
 import utils.SquarePropertiesCalculations;
 
-public class Square extends GeometryObject implements SquarePropertiesCalculations{
+public class Square extends GeometryObject implements SquarePropertiesCalculations {
 
     private double mSide;
     private double mDiagonal;
     private double mPerimeter;
 
-    private Square(double side, String color) {
+    Square(double side, String color) {
         super();
         mSide = side;
         mColor = color;
@@ -28,6 +28,14 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mDiagonal = mDiagonal;
     }
 
+    public double getmPerimeter() {
+        return mPerimeter;
+    }
+
+    public void setmPerimeter(double mPerimeter) {
+        this.mPerimeter = mPerimeter;
+    }
+
     @Override
     public void calculatePerimeter() {
         mPerimeter = 4 * mSide;
@@ -41,5 +49,11 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     @Override
     public void calculateDiagonal() {
         mDiagonal = mSide * Math.sqrt(2);
+    }
+
+    public void makeCalculations(){
+        calculateDiagonal();
+        calculatePerimeter();
+        calculateArea();
     }
 }
