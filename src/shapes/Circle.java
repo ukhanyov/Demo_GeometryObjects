@@ -9,7 +9,7 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     private double mLengthOfCircumference;
 
-    public Circle(double radius, String color) {
+    Circle(double radius, String color) {
         this.mColor = color;
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
@@ -44,13 +44,13 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
                 "Calculated Length Of Circumference = " + getmLengthOfCircumference();
     }
 
-    public void areTheNumbersRight(){
+    private void areTheNumbersRight(){
         if(mRadius <= 0){
             throw new IllegalArgumentException();
         }
     }
 
-    public double getmRadius() {
+    protected double getmRadius() {
         return mRadius;
     }
 
@@ -58,7 +58,7 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mRadius = mRadius;
     }
 
-    public double getmDiameter() {
+    protected double getmDiameter() {
         return mDiameter;
     }
 
@@ -66,7 +66,7 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mDiameter = mDiameter;
     }
 
-    public double getmLengthOfCircumference() {
+    protected double getmLengthOfCircumference() {
         return mLengthOfCircumference;
     }
 

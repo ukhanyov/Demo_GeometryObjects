@@ -8,7 +8,7 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     private double mDiagonal;
     private double mPerimeter;
 
-    public Square(double side, String color) {
+    Square(double side, String color) {
         this.mSide = side;
         this.mColor = color;
 
@@ -47,13 +47,13 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         calculateArea();
     }
 
-    public void areTheNumbersRight(){
+    private void areTheNumbersRight(){
         if(mSide <= 0){
             throw new IllegalArgumentException();
         }
     }
 
-    public double getmSide() {
+    protected double getmSide() {
         return mSide;
     }
 
@@ -61,7 +61,7 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mSide = mSide;
     }
 
-    public double getmDiagonal() {
+    protected double getmDiagonal() {
         return mDiagonal;
     }
 
@@ -69,7 +69,7 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mDiagonal = mDiagonal;
     }
 
-    public double getmPerimeter() {
+    protected double getmPerimeter() {
         return mPerimeter;
     }
 

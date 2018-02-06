@@ -1,51 +1,46 @@
+import shapes.Circle;
 import shapes.GeometryObject;
-import utils.GeometryObjectGenerator;
+import shapes.GeometryObjectFactory;
+import utils.Colors;
+import utils.ShapeNames;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        //TODO: Check if constructors are ok
+        //TODO: Make a random color assignment
 
-//        Square square = new Square(7, Colors.COLOR_GREEN.toString());
-//        square.areTheNumbersRight();
-//        square.makeCalculations();
-//        System.out.println(square.toString());
-//        System.out.println();
-//
-//
-//        Triangle triangle = new Triangle(5, 6, 7, Colors.COLOR_RED.toString());
-//        triangle.areTheNumbersRight();
-//        triangle.makeCalculations();
-//        System.out.println(triangle.toString());
-//        System.out.println();
-//
-//
-//        Circle circle = new Circle(12, Colors.COLOR_BLUE.toString());
-//        circle.areTheNumbersRight();
-//        circle.makeCalculations();
-//        System.out.println(circle.toString());
-//        System.out.println();
-//
-//
-//        Trapezoid trapezoid = new Trapezoid(10, 5, 6, 7 , Colors.COLOR_RED.toString());
-//        trapezoid.areTheNumbersRight();
-//        trapezoid.makeCalculations();
-//        System.out.println(trapezoid.toString());
-//        System.out.println();
+        List<GeometryObject> listOfGeneratedShapes = new ArrayList<>();
+
+//        GeometryObject abc = GeometryObjectFactory.generateShape(ShapeNames.SQUARE);
+//        System.out.println(abc.toString());
+
 
         for (int i = 0; i < 10000; i++){
-            GeometryObjectGenerator.generateShape(GeometryObjectGenerator.pickTheShape());
+            listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape()));
         }
-        //GeometryObjectGenerator.generateShape(GeometryObjectGenerator.pickTheShape());
 
-        for (GeometryObject item : GeometryObjectGenerator.listOfGeneratedShapes){
+        for (GeometryObject item : listOfGeneratedShapes){
             System.out.println(item.toString() + "\n");
         }
 
-            //System.out.println(GeometryObjectGenerator.listOfGeneratedShapes.get(0));
+    }
 
+    public static ShapeNames pickTheShape(){
+        List<ShapeNames> listOfShapeNames = new ArrayList<>();
+        listOfShapeNames.add(ShapeNames.CIRCLE);
+        listOfShapeNames.add(ShapeNames.SQUARE);
+        listOfShapeNames.add(ShapeNames.TRAPEZOID);
+        listOfShapeNames.add(ShapeNames.TRIANGE);
 
+        //TODO: Enclose it try block after writing custom Error handler
+        Random random = new Random();
+        int index = random.nextInt(4);
+        return listOfShapeNames.get(index);
     }
 
 }

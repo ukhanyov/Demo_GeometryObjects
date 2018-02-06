@@ -13,7 +13,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     private double mPerimeter;
 
-    public Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, String color) {
+    Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, String color) {
         this.mColor = color;
         this.mBigBase = mBigBase;
         this.mSmallBase = mSmallBase;
@@ -61,7 +61,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
                 "Calculated Area = " + getmArea();
     }
 
-    public void areTheNumbersRight(){
+    private void areTheNumbersRight(){
         if(mBigBase < mSmallBase ||
                 mBigBase < mLeftSide ||
                 mBigBase < mRightSide){
@@ -85,7 +85,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         }
     }
 
-    public double getmBigBase() {
+    protected double getmBigBase() {
         return mBigBase;
     }
 
@@ -93,7 +93,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mBigBase = mBigBase;
     }
 
-    public double getmSmallBase() {
+    protected double getmSmallBase() {
         return mSmallBase;
     }
 
@@ -101,7 +101,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mSmallBase = mSmallBase;
     }
 
-    public double getmLeftSide() {
+    protected double getmLeftSide() {
         return mLeftSide;
     }
 
@@ -109,7 +109,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mLeftSide = mLeftSide;
     }
 
-    public double getmRightSide() {
+    protected double getmRightSide() {
         return mRightSide;
     }
 
@@ -117,7 +117,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mRightSide = mRightSide;
     }
 
-    public double getmPerimeter() {
+    protected double getmPerimeter() {
         return mPerimeter;
     }
 
@@ -125,7 +125,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mPerimeter = mPerimeter;
     }
 
-    public double getmHeight() {
+    protected double getmHeight() {
         return mHeight;
     }
 }

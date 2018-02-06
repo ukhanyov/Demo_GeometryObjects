@@ -2,13 +2,13 @@ package shapes;
 
 public class GeometryObject {
 
-    protected String mColor;
-    protected double mArea;
+    String mColor;
+    double mArea;
 
-    public GeometryObject() {
+    GeometryObject() {
     }
 
-    public String getmColor() {
+    String getmColor() {
         return mColor;
     }
 
@@ -16,11 +16,11 @@ public class GeometryObject {
         this.mColor = mColor;
     }
 
-    public double getmArea() {
+    double getmArea() {
         return mArea;
     }
 
-    protected void setmArea(double mArea) {
+    void setmArea(double mArea) {
         this.mArea = mArea;
     }
 }

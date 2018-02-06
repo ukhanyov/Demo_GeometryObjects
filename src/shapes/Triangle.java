@@ -13,7 +13,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     private double mPerimeter;
 
 
-    public Triangle(double mSideA, double mSideB, double mSideC, String color) {
+    Triangle(double mSideA, double mSideB, double mSideC, String color) {
         this.mColor = color;
         this.mSideA = mSideA;
         this.mSideB = mSideB;
@@ -56,7 +56,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
                 "Triangle's Base: " + getmBase();
     }
 
-    public void areTheNumbersRight(){
+    private void areTheNumbersRight(){
 
         if(mSideA + mSideB <= mSideC){
             throw new IllegalArgumentException();
@@ -96,7 +96,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         }
     }
 
-    public double getmSideA() {
+    protected double getmSideA() {
         return mSideA;
     }
 
@@ -104,7 +104,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideA = mSideA;
     }
 
-    public double getmSideB() {
+    protected double getmSideB() {
         return mSideB;
     }
 
@@ -112,7 +112,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideB = mSideB;
     }
 
-    public double getmSideC() {
+    protected double getmSideC() {
         return mSideC;
     }
 
@@ -120,11 +120,11 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideC = mSideC;
     }
 
-    public double getmPerimeter() {
+    protected double getmPerimeter() {
         return mPerimeter;
     }
 
-    public double getmBase() {
+    protected double getmBase() {
         return mBase;
     }
 
