@@ -15,30 +15,6 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mDiameter = 2 * mRadius;
     }
 
-    public double getmRadius() {
-        return mRadius;
-    }
-
-    public void setmRadius(double mRadius) {
-        this.mRadius = mRadius;
-    }
-
-    public double getmDiameter() {
-        return mDiameter;
-    }
-
-    public void setmDiameter(double mDiameter) {
-        this.mDiameter = mDiameter;
-    }
-
-    public double getmLengthOfCircumference() {
-        return mLengthOfCircumference;
-    }
-
-    public void setmLengthOfCircumference(double mLengthOfCircumference) {
-        this.mLengthOfCircumference = mLengthOfCircumference;
-    }
-
     @Override
     public void calculateArea() {
         this.mArea = Math.PI * Math.pow(mRadius, 2);
@@ -53,5 +29,33 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
     public void makeCalculations() {
         calculateLengthOfCircumference();
         calculateArea();
+    }
+
+    public void areTheNumbersRigth(){
+
+    }
+
+    public double getmRadius() {
+        return mRadius;
+    }
+
+    protected void setmRadius(double mRadius) {
+        this.mRadius = mRadius;
+    }
+
+    public double getmDiameter() {
+        return mDiameter;
+    }
+
+    protected void setmDiameter(double mDiameter) {
+        this.mDiameter = mDiameter;
+    }
+
+    public double getmLengthOfCircumference() {
+        return mLengthOfCircumference;
+    }
+
+    protected void setmLengthOfCircumference(double mLengthOfCircumference) {
+        this.mLengthOfCircumference = mLengthOfCircumference;
     }
 }

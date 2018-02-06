@@ -42,62 +42,6 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         setmCathetusTwo(mSideB);
     }
 
-    public double getmSideA() {
-        return mSideA;
-    }
-
-    public void setmSideA(double mSideA) {
-        this.mSideA = mSideA;
-    }
-
-    public double getmSideB() {
-        return mSideB;
-    }
-
-    public void setmSideB(double mSideB) {
-        this.mSideB = mSideB;
-    }
-
-    public double getmSideC() {
-        return mSideC;
-    }
-
-    public void setmSideC(double mSideC) {
-        this.mSideC = mSideC;
-    }
-
-    public double getmBase() {
-        return mBase;
-    }
-
-    public void setmBase(double mBase) {
-        this.mBase = mBase;
-    }
-
-    public double getmCathetusOne() {
-        return mCathetusOne;
-    }
-
-    public void setmCathetusOne(double mCathetusOne) {
-        this.mCathetusOne = mCathetusOne;
-    }
-
-    public double getmCathetusTwo() {
-        return mCathetusTwo;
-    }
-
-    public void setmCathetusTwo(double mCathetusTwo) {
-        this.mCathetusTwo = mCathetusTwo;
-    }
-
-    public double getmPerimeter() {
-        return mPerimeter;
-    }
-
-    public void setmPerimeter(double mPerimeter) {
-        this.mPerimeter = mPerimeter;
-    }
-
     @Override
     public void calculatePerimeter() {
         mPerimeter = mBase + mCathetusOne + mCathetusTwo;
@@ -123,6 +67,62 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
             return "In given triangle is not valid triangle inequality";
         }
         return null;
+    }
+
+    public double getmSideA() {
+        return mSideA;
+    }
+
+    protected void setmSideA(double mSideA) {
+        this.mSideA = mSideA;
+    }
+
+    public double getmSideB() {
+        return mSideB;
+    }
+
+    protected void setmSideB(double mSideB) {
+        this.mSideB = mSideB;
+    }
+
+    public double getmSideC() {
+        return mSideC;
+    }
+
+    protected void setmSideC(double mSideC) {
+        this.mSideC = mSideC;
+    }
+
+    public double getmBase() {
+        return mBase;
+    }
+
+    protected void setmBase(double mBase) {
+        this.mBase = mBase;
+    }
+
+    public double getmCathetusOne() {
+        return mCathetusOne;
+    }
+
+    protected void setmCathetusOne(double mCathetusOne) {
+        this.mCathetusOne = mCathetusOne;
+    }
+
+    public double getmCathetusTwo() {
+        return mCathetusTwo;
+    }
+
+    protected void setmCathetusTwo(double mCathetusTwo) {
+        this.mCathetusTwo = mCathetusTwo;
+    }
+
+    public double getmPerimeter() {
+        return mPerimeter;
+    }
+
+    protected void setmPerimeter(double mPerimeter) {
+        this.mPerimeter = mPerimeter;
     }
 
 }

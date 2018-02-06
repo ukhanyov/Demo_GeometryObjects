@@ -12,7 +12,7 @@ public class GeometryObject {
         return mColor;
     }
 
-    public void setmColor(String mColor) {
+    protected void setmColor(String mColor) {
         this.mColor = mColor;
     }
 
@@ -20,7 +20,7 @@ public class GeometryObject {
         return mArea;
     }
 
-    public void setmArea(double mArea) {
+    protected void setmArea(double mArea) {
         this.mArea = mArea;
     }
 }

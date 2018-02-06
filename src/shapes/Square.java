@@ -13,30 +13,6 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mColor = color;
     }
 
-    public double getmSide() {
-        return mSide;
-    }
-
-    public void setmSide(double mSide) {
-        this.mSide = mSide;
-    }
-
-    public double getmDiagonal() {
-        return mDiagonal;
-    }
-
-    public void setmDiagonal(double mDiagonal) {
-        this.mDiagonal = mDiagonal;
-    }
-
-    public double getmPerimeter() {
-        return mPerimeter;
-    }
-
-    public void setmPerimeter(double mPerimeter) {
-        this.mPerimeter = mPerimeter;
-    }
-
     @Override
     public void calculatePerimeter() {
         mPerimeter = 4 * mSide;
@@ -56,5 +32,33 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         calculateDiagonal();
         calculatePerimeter();
         calculateArea();
+    }
+
+    public void areTheNumbersRigth(){
+
+    }
+
+    public double getmSide() {
+        return mSide;
+    }
+
+    protected void setmSide(double mSide) {
+        this.mSide = mSide;
+    }
+
+    public double getmDiagonal() {
+        return mDiagonal;
+    }
+
+    protected void setmDiagonal(double mDiagonal) {
+        this.mDiagonal = mDiagonal;
+    }
+
+    public double getmPerimeter() {
+        return mPerimeter;
+    }
+
+    protected void setmPerimeter(double mPerimeter) {
+        this.mPerimeter = mPerimeter;
     }
 }
