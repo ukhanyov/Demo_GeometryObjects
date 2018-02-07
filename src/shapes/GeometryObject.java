@@ -3,12 +3,13 @@ package shapes;
 public class GeometryObject {
 
     String mColor;
+    String mName;
     double mArea;
 
     GeometryObject() {
     }
 
-    String getmColor() {
+    public String getmColor() {
         return mColor;
     }
 
@@ -16,11 +17,19 @@ public class GeometryObject {
         this.mColor = mColor;
     }
 
-    double getmArea() {
+    public double getmArea() {
         return mArea;
     }
 
-    void setmArea(double mArea) {
+    protected void setmArea(double mArea) {
         this.mArea = mArea;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    protected void setmName(String mName) {
+        this.mName = mName;
     }
 }

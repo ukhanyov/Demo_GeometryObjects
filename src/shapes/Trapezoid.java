@@ -9,16 +9,19 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
     private double mLeftSide;
     private double mRightSide;
 
+    private String mName;
+
     private double mHeight;
 
     private double mPerimeter;
 
-    Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, String color) {
+    Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, String color, String name) {
         this.mColor = color;
         this.mBigBase = mBigBase;
         this.mSmallBase = mSmallBase;
         this.mLeftSide = mLeftSide;
         this.mRightSide = mRightSide;
+        this.mName = name;
 
         areTheNumbersRight();
         makeCalculations();
@@ -52,13 +55,17 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     @Override
     public String toString() {
-        return "Trapezoid with following parameters:" + "\n" +
+        return String.format("Trapezoid with following parameters:" + "\n" +
                 "Color: " + getmColor() + "\n" +
-                "Base: " + getmBigBase() + "; Top: " + getmSmallBase() +
-                "; Left side: " + getmLeftSide() + "; Right side: " + getmRightSide() + "\n" +
-                "Calculated Height = " + getmHeight() + "\n" +
-                "Calculated Perimeter = " + getmPerimeter() + "\n" +
-                "Calculated Area = " + getmArea();
+                "Base: " + "%.3f" + "\n" +
+                "Top: " + "%.3f" + "\n" +
+                "Left side: " + "%.3f" + "\n" +
+                "Right side: " + "%.3f" + "\n" +
+                "Calculated Height = " + "%.3f" + "\n" +
+                "Calculated Perimeter = " + "%.3f" + "\n" +
+                "Calculated Area = " + "%.3f",
+                (float)getmBigBase(), (float)getmSmallBase(), (float)getmLeftSide(), (float)getmRightSide(),
+                (float)getmHeight(), (float)getmPerimeter(), (float)getmArea());
     }
 
     private void areTheNumbersRight(){
@@ -127,5 +134,13 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     protected double getmHeight() {
         return mHeight;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    protected void setmName(String mName) {
+        this.mName = mName;
     }
 }

@@ -1,26 +1,25 @@
-import shapes.Circle;
 import shapes.GeometryObject;
 import shapes.GeometryObjectFactory;
 import utils.Colors;
 import utils.ShapeNames;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Main {
 
+    //private static UI mUserInterface;
+
+    static List<GeometryObject> listOfGeneratedShapes = new ArrayList<>();
+
     public static void main(String[] args) {
 
         //TODO: Make a random color assignment
 
-        List<GeometryObject> listOfGeneratedShapes = new ArrayList<>();
-
-//        GeometryObject abc = GeometryObjectFactory.generateShape(ShapeNames.SQUARE);
-//        System.out.println(abc.toString());
-
-
-        for (int i = 0; i < 10000; i++){
+        for (int i = 0; i < 100; i++){
             listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape(), pickColor()));
         }
 
@@ -28,6 +27,30 @@ public class Main {
             System.out.println(item.toString() + "\n");
         }
 
+        //mUserInterface = new UI();
+
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(Main::createAndShowGUI);
+    }
+
+    /**
+     * Create the GUI and show it.
+     */
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Generate Random Shapes");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        //Create and set up the content pane.
+        JComponent newContentPane = new UserInterface();
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        //frame.pack();
+        frame.setSize(400, 400);
+        frame.setVisible(true);
     }
 
     private static ShapeNames pickTheShape(){

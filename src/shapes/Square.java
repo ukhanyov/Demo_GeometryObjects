@@ -8,9 +8,12 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     private double mDiagonal;
     private double mPerimeter;
 
-    Square(double side, String color) {
+    private String mName;
+
+    Square(double side, String color, String name) {
         this.mSide = side;
         this.mColor = color;
+        this.mName = name;
 
         areTheNumbersRight();
         makeCalculations();
@@ -33,12 +36,13 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
 
     @Override
     public String toString() {
-        return "Square with following parameters:" + "\n" +
+        return String.format("Square with following parameters:" + "\n" +
                 "Color: " + getmColor() + "\n" +
-                "Side: " + getmSide() + "\n" +
-                "Calculated Diagonal = " + getmDiagonal() + "\n" +
-                "Calculated Perimeter = " + getmPerimeter() + "\n" +
-                "Calculated Area = " + getmArea();
+                "Side: " + "%.3f" + "\n" +
+                "Calculated Diagonal = " + "%.3f" + "\n" +
+                "Calculated Perimeter = " + "%.3f" + "\n" +
+                "Calculated Area = " + "%.3f",
+                (float)getmSide(), (float) getmDiagonal(), (float) getmPerimeter(), (float) getmArea());
     }
 
     public void makeCalculations(){
@@ -75,5 +79,13 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
 
     protected void setmPerimeter(double mPerimeter) {
         this.mPerimeter = mPerimeter;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    protected void setmName(String mName) {
+        this.mName = mName;
     }
 }

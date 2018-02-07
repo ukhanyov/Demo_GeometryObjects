@@ -8,16 +8,19 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     private double mSideB;
     private double mSideC;
 
+    private String mName;
+
     private double mBase;
 
     private double mPerimeter;
 
 
-    Triangle(double mSideA, double mSideB, double mSideC, String color) {
+    Triangle(double mSideA, double mSideB, double mSideC, String color, String name) {
         this.mColor = color;
         this.mSideA = mSideA;
         this.mSideB = mSideB;
         this.mSideC = mSideC;
+        this.mName = name;
 
         identifyBase();
 
@@ -47,13 +50,16 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
 
     @Override
     public String toString() {
-        return "Triangle with following parameters:" + "\n" +
+        return String.format("Triangle with following parameters:" + "\n" +
                 "Color: " + getmColor() + "\n" +
-                "Side A: " + getmSideA() + "; Side B: " + getmSideB() +
-                "; Side C: " + getmSideC() + "\n" +
-                "Calculated Perimeter = " + getmPerimeter() + "\n" +
-                "Calculated Area = " + getmArea() + "\n" +
-                "Triangle's Base: " + getmBase();
+                "Side A: " + "%.3f" + "\n" +
+                "Side B: " + "%.3f" + "\n" +
+                "Side C: " + "%.3f" + "\n" +
+                "Calculated Perimeter = " + "%.3f" + "\n" +
+                "Calculated Area = " + "%.3f" + "\n" +
+                "Triangle's Base: " + "%.3f",
+                (float)getmSideA(), (float)getmSideB(), (float)getmSideC(),
+                (float)getmPerimeter(), (float)getmArea(), (float)getmBase());
     }
 
     private void areTheNumbersRight(){
@@ -136,4 +142,11 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mPerimeter = mPerimeter;
     }
 
+    public String getmName() {
+        return mName;
+    }
+
+    protected void setmName(String mName) {
+        this.mName = mName;
+    }
 }

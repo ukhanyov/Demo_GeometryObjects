@@ -7,12 +7,15 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
     private double mRadius;
     private double mDiameter;
 
+    private String mName;
+
     private double mLengthOfCircumference;
 
-    Circle(double radius, String color) {
+    Circle(double radius, String color, String name) {
         this.mColor = color;
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
+        this.mName = name;
 
         areTheNumbersRight();
         makeCalculations();
@@ -36,12 +39,14 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     @Override
     public String toString() {
-        return "Circle with following parameters:" + "\n" +
+
+        return String.format("Circle with following parameters:" + "\n" +
                 "Color: " + getmColor() + "\n" +
-                "Radius: " + getmRadius() +  "\n" +
-                "Diameter: " + getmDiameter()+  "\n" +
-                "Calculated Area = " + getmArea() + "\n" +
-                "Calculated Length Of Circumference = " + getmLengthOfCircumference();
+                "Radius: " + "%.3f" +  "\n" +
+                "Diameter: " + "%.3f" + "\n" +
+                "Calculated Area = " + "%.3f" + "\n" +
+                "Calculated Length Of Circumference = " + "%.3f",
+                (float)getmRadius(), (float)getmDiameter(), (float)getmArea(), (float)getmLengthOfCircumference());
     }
 
     private void areTheNumbersRight(){
@@ -72,5 +77,13 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     protected void setmLengthOfCircumference(double mLengthOfCircumference) {
         this.mLengthOfCircumference = mLengthOfCircumference;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    protected void setmName(String mName) {
+        this.mName = mName;
     }
 }
