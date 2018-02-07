@@ -21,7 +21,7 @@ public class Main {
 
 
         for (int i = 0; i < 10000; i++){
-            listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape()));
+            listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape(), pickColor()));
         }
 
         for (GeometryObject item : listOfGeneratedShapes){
@@ -30,7 +30,7 @@ public class Main {
 
     }
 
-    public static ShapeNames pickTheShape(){
+    private static ShapeNames pickTheShape(){
         List<ShapeNames> listOfShapeNames = new ArrayList<>();
         listOfShapeNames.add(ShapeNames.CIRCLE);
         listOfShapeNames.add(ShapeNames.SQUARE);
@@ -39,8 +39,27 @@ public class Main {
 
         //TODO: Enclose it try block after writing custom Error handler
         Random random = new Random();
-        int index = random.nextInt(4);
+        int index = random.nextInt(listOfShapeNames.size());
         return listOfShapeNames.get(index);
+    }
+
+    private static String pickColor(){
+        List<Colors> listOfColors = new ArrayList<>();
+        listOfColors.add(Colors.BLACK);
+        listOfColors.add(Colors.BLUE);
+        listOfColors.add(Colors.BROWN);
+        listOfColors.add(Colors.GREEN);
+        listOfColors.add(Colors.GREY);
+        listOfColors.add(Colors.ORANGE);
+        listOfColors.add(Colors.PURPLE);
+        listOfColors.add(Colors.RED);
+        listOfColors.add(Colors.WHITE);
+        listOfColors.add(Colors.YELLOW);
+
+        //TODO: Enclose it try block after writing custom Error handler
+        Random random = new Random();
+        int index = random.nextInt(listOfColors.size());
+        return listOfColors.get(index).toString();
     }
 
 }

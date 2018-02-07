@@ -1,5 +1,5 @@
 package utils;
 
 public enum Colors {
-    COLOR_RED, COLOR_GREEN, COLOR_BLUE
+    RED, GREEN, BLUE, YELLOW, GREY, WHITE, BLACK, ORANGE, BROWN, PURPLE
 }
