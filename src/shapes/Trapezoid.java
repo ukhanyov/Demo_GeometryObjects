@@ -23,6 +23,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
     private double mPerimeter;
 
     Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, Colors color) {
+        //TODO: Check if the data is correct. Introduce some rules, and change data generation process
         this.mColor = color;
         this.mBigBase = mBigBase;
         this.mSmallBase = mSmallBase;

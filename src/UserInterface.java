@@ -8,6 +8,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.*;
 
 public class UserInterface extends JPanel implements ListSelectionListener {
@@ -27,7 +28,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         super(new BorderLayout());
 
         listModel = new DefaultListModel<>();
-        for (int i = 0; i < Main.listOfGeneratedShapes.size(); i++){
+        for (int i = 0; i < Main.listOfGeneratedShapes.size(); i++) {
             listModel.addElement(Main.listOfGeneratedShapes.get(i).getmName() + " - " +
                     Main.listOfGeneratedShapes.get(i).getmColor());
         }
@@ -53,7 +54,6 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
         // Setting up drawing area
         drawingAreaJPanel = new JPanel();
-        drawingAreaJPanel.setLayout(new BoxLayout(drawingAreaJPanel, BoxLayout.PAGE_AXIS));
 
         //Create a panel that uses BoxLayout.
         JPanel buttonPane = new JPanel();
@@ -76,7 +76,8 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
     }
 
-    /** Handles action, when a Select button is pressed
+    /**
+     * Handles action, when a Select button is pressed
      */
 
 
@@ -97,7 +98,8 @@ public class UserInterface extends JPanel implements ListSelectionListener {
     }
 
     //This method is required by ListSelectionListener.
-    public void valueChanged(ListSelectionEvent e) {    }
+    public void valueChanged(ListSelectionEvent e) {
+    }
 
     public class Bubble extends JPanel {
 
@@ -107,7 +109,6 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         public Bubble(GeometryObject geometryObject) {
 
             mGeometryObject = geometryObject;
-            setBackground(darken(getColorFromGeometryObject(mGeometryObject), 0.0000001f));
             setOpaque(false);
 
         }
@@ -122,42 +123,34 @@ public class UserInterface extends JPanel implements ListSelectionListener {
             super.paintComponent(g);
             Graphics2D g2d = (Graphics2D) g.create();
 
-            // Getting the color
-            Color startColor = brighten(getBackground(), 0.0000001f);
-            Color endColor = getBackground();
+            g2d.setPaint(getColorFromGeometryObject(mGeometryObject));
 
-            // Painting into the color
-            int x = (getWidth() - 150) / 2;
-            int y = (getHeight() - 150) / 2;
+            int widthJPanel = (getWidth()) / 2;
+            int heightJPanel = (getHeight()) / 2;
 
-            LinearGradientPaint lgp = new LinearGradientPaint(
-                    new Point(x, y),
-                    new Point(x, y + 150),
-                    new float[]{0f, 1f},
-                    new Color[]{startColor, endColor});
-            g2d.setPaint(lgp);
-
-
-
-            switch (mGeometryObject.getmName()){
+            switch (mGeometryObject.getmName()) {
                 case CIRCLE:
-                    g2d.fill(new Ellipse2D.Double(0, 0, mGeometryObject.getSidesOfTheShape().get(0),
-                                                            mGeometryObject.getSidesOfTheShape().get(0)));
+                    g2d.fill(new Ellipse2D.Double((getWidth() - mGeometryObject.getSidesOfTheShape().get(0)) / 2,
+                            (getHeight() - mGeometryObject.getSidesOfTheShape().get(0)) / 2,
+                            mGeometryObject.getSidesOfTheShape().get(0),
+                            mGeometryObject.getSidesOfTheShape().get(0)));
                     break;
                 case SQUARE:
-                    g2d.fill(new Rectangle2D.Double(0, 0, mGeometryObject.getSidesOfTheShape().get(0),
-                                                                    mGeometryObject.getSidesOfTheShape().get(0)));
+                    g2d.fill(new Rectangle2D.Double((getWidth() - mGeometryObject.getSidesOfTheShape().get(0)) / 2,
+                            (getHeight() - mGeometryObject.getSidesOfTheShape().get(0)) / 2,
+                            mGeometryObject.getSidesOfTheShape().get(0),
+                            mGeometryObject.getSidesOfTheShape().get(0)));
                     break;
                 case TRAPEZOID:
                     double bigBase = mGeometryObject.getSidesOfTheShape().get(0);
                     double smallBase = mGeometryObject.getSidesOfTheShape().get(1);
                     double leftSide = mGeometryObject.getSidesOfTheShape().get(2);
                     double rightSide = mGeometryObject.getSidesOfTheShape().get(3);
-                    double height = Math.sqrt(((bigBase + leftSide - smallBase + rightSide)*
-                            (-bigBase + leftSide + smallBase + rightSide)*
-                            (bigBase - leftSide - smallBase + rightSide)*
+                    double height = Math.sqrt(((bigBase + leftSide - smallBase + rightSide) *
+                            (-bigBase + leftSide + smallBase + rightSide) *
+                            (bigBase - leftSide - smallBase + rightSide) *
                             (bigBase + leftSide - smallBase - rightSide)) /
-                            (4 * Math.pow((bigBase - smallBase),2)));
+                            (4 * Math.pow((bigBase - smallBase), 2)));
 
                     double leftSubBase = Math.sqrt(Math.pow(leftSide, 2) - Math.pow(height, 2));
                     double middleSubBase = leftSubBase + smallBase;
@@ -166,13 +159,13 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     double a_1 = bigBase;
                     double b_1 = diagonal;
                     double c_1 = rightSide;
-                    double x_1 = (b_1*b_1 + a_1*a_1 - c_1*c_1)/(2*a_1);
+                    double x_1 = (b_1 * b_1 + a_1 * a_1 - c_1 * c_1) / (2 * a_1);
                     double y_1 = Math.abs(Math.sqrt(Math.pow(b_1, 2) - Math.pow(x_1, 2)));
 
                     double a_2 = leftSubBase;
                     double b_2 = leftSide;
                     double c_2 = height;
-                    double x_2 = (b_2*b_2 + a_2*a_2 - c_2*c_2)/(2*a_2);
+                    double x_2 = (b_2 * b_2 + a_2 * a_2 - c_2 * c_2) / (2 * a_2);
                     double y_2 = Math.abs(Math.sqrt(Math.pow(b_2, 2) - Math.pow(x_2, 2)));
 
                     double x1Points[] = {0, a_1, x_1, x_2};
@@ -188,20 +181,26 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     g2d.fill(polygon);
 
                     break;
+
                 case TRIANGE:
                     double a = mGeometryObject.getSidesOfTheShape().get(0);
                     double b = mGeometryObject.getSidesOfTheShape().get(1);
                     double c = mGeometryObject.getSidesOfTheShape().get(2);
 
-
-                    double xT = (b*b + a*a - c*c)/(2*a);
+                    double xT = (b * b + a * a - c * c) / (2 * a);
                     double yT = Math.abs(Math.sqrt(Math.pow(b, 2) - Math.pow(xT, 2)));
 
-                    double x1Points1[] = {0, a, xT};
-                    double y1Points1[] = {0, 0, yT};
+                    double o_x = (0 + a + xT) / 3;
+                    double o_y = (0 + 0 + yT) / 3;
+
+                    double widthTri = (getWidth() - o_x - 20) / 2;
+                    double heightTri = (getHeight() - o_y - 20) / 2;
+
+                    double x1Points1[] = {widthTri + 0, widthTri + a, widthTri + xT};
+                    double y1Points1[] = {heightTri + 0, heightTri + 0, heightTri + yT};
 
                     GeneralPath polygon1 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x1Points1.length);
-                    polygon1.moveTo(x1Points1[0], y1Points1[0]);
+                    polygon1.moveTo(x1Points1[0] , y1Points1[0] );
 
                     for (int index = 1; index < x1Points1.length; index++) {
                         polygon1.lineTo(x1Points1[index], y1Points1[index]);
@@ -211,6 +210,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     g2d.fill(polygon1);
 
                     break;
+
                 default:
                     throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
             }
@@ -219,25 +219,9 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
     }
 
-    public static Color brighten(Color color, double fraction) {
-        int red = (int) Math.round(Math.min(255, color.getRed() + 255 * fraction));
-        int green = (int) Math.round(Math.min(255, color.getGreen() + 255 * fraction));
-        int blue = (int) Math.round(Math.min(255, color.getBlue() + 255 * fraction));
-        int alpha = color.getAlpha();
-        return new Color(red, green, blue, alpha);
-    }
+    private Color getColorFromGeometryObject(GeometryObject geometryObject) {
 
-    public static Color darken(Color color, double fraction) {
-        int red = (int) Math.round(Math.max(0, color.getRed() - 255 * fraction));
-        int green = (int) Math.round(Math.max(0, color.getGreen() - 255 * fraction));
-        int blue = (int) Math.round(Math.max(0, color.getBlue() - 255 * fraction));
-        int alpha = color.getAlpha();
-        return new Color(red, green, blue, alpha);
-    }
-
-    private Color getColorFromGeometryObject(GeometryObject geometryObject){
-
-        switch (geometryObject.getmColor()){
+        switch (geometryObject.getmColor()) {
             case BLACK:
                 return Color.BLACK;
             case GREEN:
