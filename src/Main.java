@@ -49,7 +49,7 @@ public class Main {
 
         //Display the window.
         //frame.pack();
-        frame.setSize(400, 400);
+        frame.setSize(450, 450);
         frame.setVisible(true);
     }
 

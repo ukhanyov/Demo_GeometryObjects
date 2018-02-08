@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -10,10 +12,9 @@ public class UserInterface extends JPanel implements ListSelectionListener {
     private static final String selectString = "Select";
 
     private JButton selectButton;
-
     private JLabel selectedShapeLabel;
-
     private JTextArea infoSelectedTextField;
+    private JPanel drawingAreaJPanel;
 
     UserInterface() {
 
@@ -44,6 +45,10 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         // Selected Shape description field initialization
         infoSelectedTextField = new JTextArea();
 
+        // Setting up drawing area
+        drawingAreaJPanel = new JPanel();
+        drawingAreaJPanel.setLayout(new BoxLayout(drawingAreaJPanel, BoxLayout.PAGE_AXIS));
+
         //Create a panel that uses BoxLayout.
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
@@ -53,9 +58,11 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         buttonPane.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
         JPanel infoAndDrawingPane = new JPanel();
-        infoAndDrawingPane.setLayout(new BoxLayout(infoAndDrawingPane, BoxLayout.LINE_AXIS));
+        infoAndDrawingPane.setLayout(new BoxLayout(infoAndDrawingPane, BoxLayout.Y_AXIS));
         infoAndDrawingPane.add(infoSelectedTextField);
-        buttonPane.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
+        infoAndDrawingPane.add(Box.createHorizontalStrut(8));
+        infoAndDrawingPane.add(drawingAreaJPanel);
+        infoAndDrawingPane.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
         add(listScrollPane, BorderLayout.LINE_START);
         add(buttonPane, BorderLayout.PAGE_END);
@@ -65,32 +72,83 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
     /** Handles action, when a Select button is pressed
      */
+
+
     class SelectButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            //This method can be called only if
-            //there's a valid selection
-            //so go ahead and do whatever's selected.
+
             int index = list.getSelectedIndex();
             selectedShapeLabel.setText(String.valueOf(index));
 
             infoSelectedTextField.setText(Main.listOfGeneratedShapes.get(index).toString());
+
+            drawingAreaJPanel.removeAll();
+
+            drawingAreaJPanel.add(new Bubble());
+
         }
 
     }
 
     //This method is required by ListSelectionListener.
-    public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting()) {
+    public void valueChanged(ListSelectionEvent e) {    }
 
-            if (list.getSelectedIndex() == -1) {
-                //No selection, disable fire button.
-                selectButton.setEnabled(false);
+    public class Bubble extends JPanel {
 
-            } else {
-                //Selection, enable the fire button.
-                selectButton.setEnabled(true);
-            }
+        public Bubble() {
+
+            setBackground(darken(Color.RED, 0.3f));
+            setOpaque(false);
         }
+
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(150, 150);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g.create();
+
+            // Getting the color
+            Color startColor = brighten(getBackground(), 0.05f);
+            Color endColor = getBackground();
+
+            // Painting into the color
+            int x = (getWidth() - 150) / 2;
+            int y = (getHeight() - 150) / 2;
+
+            LinearGradientPaint lgp = new LinearGradientPaint(
+                    new Point(x, y),
+                    new Point(x, y + 150),
+                    new float[]{0f, 1f},
+                    new Color[]{startColor, endColor});
+            g2d.setPaint(lgp);
+
+            g2d.fill(new Rectangle2D.Double(80, 10, 100, 100));
+            //g2d.fill(new Ellipse2D.Double(x, y, 150, 150));
+
+        }
+
     }
+
+    public static Color brighten(Color color, double fraction) {
+        int red = (int) Math.round(Math.min(255, color.getRed() + 255 * fraction));
+        int green = (int) Math.round(Math.min(255, color.getGreen() + 255 * fraction));
+        int blue = (int) Math.round(Math.min(255, color.getBlue() + 255 * fraction));
+        int alpha = color.getAlpha();
+        return new Color(red, green, blue, alpha);
+    }
+
+    public static Color darken(Color color, double fraction) {
+        int red = (int) Math.round(Math.max(0, color.getRed() - 255 * fraction));
+        int green = (int) Math.round(Math.max(0, color.getGreen() - 255 * fraction));
+        int blue = (int) Math.round(Math.max(0, color.getBlue() - 255 * fraction));
+        int alpha = color.getAlpha();
+        return new Color(red, green, blue, alpha);
+    }
+
+
 }
