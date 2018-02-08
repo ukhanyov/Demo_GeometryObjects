@@ -1,19 +1,12 @@
 package shapes;
 
 import utils.Colors;
+import utils.Constants;
 import utils.ShapeNames;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GeometryObjectFactory {
-
-    //TODO: Replace it later with the Preferences API settings
-    //TODO: Look into object creation process
-
-    private static final double MAXIMAL_CIRCLE_RADIUS = 100;
-    private static final double MAXIMAL_SQUARE_SIDE_LENGTH = 100;
-    private static final double MAXIMAL_TRAPEZOID_SIDE_LENGTH = 100;
-    private static final double MAXIMAL_TRIANGLE_SIDE_LENGTH = 100;
 
     private GeometryObjectFactory() {
     }
@@ -33,30 +26,31 @@ public class GeometryObjectFactory {
                 return createTrapezoid(color);
 
             default:
-                //TODO: Insert Error handler message
-                break;
+                throw new IllegalArgumentException("Wrong type of Shape object in the Shape Factory");
         }
-        return null;
     }
 
     private static Circle crateCircle(Colors color){
-        double generatedRadius = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_CIRCLE_RADIUS);
+        double generatedRadius = ThreadLocalRandom.current().nextDouble(0.000001,
+                Constants.CONSTANT_MAXIMAL_CIRCLE_RADIUS);
         return new Circle(generatedRadius, color);
     }
 
     private static Square createSquare(Colors color){
-        double generatedSide = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_SQUARE_SIDE_LENGTH);
+        double generatedSide = ThreadLocalRandom.current().nextDouble(0.000001,
+                Constants.CONSTANT_MAXIMAL_SQUARE_SIDE);
         return new Square(generatedSide, color);
     }
 
     private static Trapezoid createTrapezoid(Colors color){
         double baseMinimum = 0.000001;
 
-        double generatedSmallBase = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_TRAPEZOID_SIDE_LENGTH);
+        double generatedSmallBase = ThreadLocalRandom.current().nextDouble(0.000001,
+                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
         double generatedLeftSide = ThreadLocalRandom.current().nextDouble(generatedSmallBase,
-                                                                            MAXIMAL_TRAPEZOID_SIDE_LENGTH);
+                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
         double generatedRightSide = ThreadLocalRandom.current().nextDouble(generatedSmallBase,
-                                                                            MAXIMAL_TRAPEZOID_SIDE_LENGTH);
+                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
 
         if(generatedLeftSide > generatedRightSide){
             baseMinimum = generatedLeftSide;
@@ -65,7 +59,7 @@ public class GeometryObjectFactory {
         }
 
         double generatedBigBase = ThreadLocalRandom.current().nextDouble(baseMinimum,
-                                                                            MAXIMAL_TRAPEZOID_SIDE_LENGTH);
+                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
         return new Trapezoid(generatedBigBase,
                 generatedSmallBase,
                 generatedLeftSide,
@@ -75,10 +69,12 @@ public class GeometryObjectFactory {
 
     private static Triangle createTriangle(Colors color){
         double baseMinimum = 0.000001;
-        double baseMaximum = MAXIMAL_TRIANGLE_SIDE_LENGTH;
+        double baseMaximum = Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE;
 
-        double generatedCathetusOne = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_TRIANGLE_SIDE_LENGTH);
-        double generatedCathetusTwo = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_TRIANGLE_SIDE_LENGTH);
+        double generatedCathetusOne = ThreadLocalRandom.current().nextDouble(0.000001,
+                Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE);
+        double generatedCathetusTwo = ThreadLocalRandom.current().nextDouble(0.000001,
+                Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE);
 
         if(generatedCathetusOne > generatedCathetusTwo){
             baseMinimum = generatedCathetusOne;
@@ -86,7 +82,7 @@ public class GeometryObjectFactory {
             baseMinimum = generatedCathetusTwo;
         }
 
-        if(generatedCathetusOne + generatedCathetusTwo < MAXIMAL_TRIANGLE_SIDE_LENGTH){
+        if(generatedCathetusOne + generatedCathetusTwo < Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE){
             baseMaximum = generatedCathetusOne + generatedCathetusTwo;
         }
 

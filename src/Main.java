@@ -4,7 +4,6 @@ import utils.Colors;
 import utils.ShapeNames;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,8 +15,6 @@ public class Main {
     static List<GeometryObject> listOfGeneratedShapes = new ArrayList<>();
 
     public static void main(String[] args) {
-
-        //TODO: Make a random color assignment
 
         for (int i = 0; i < 100; i++){
             listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape(), pickColor()));
@@ -60,10 +57,14 @@ public class Main {
         listOfShapeNames.add(ShapeNames.TRAPEZOID);
         listOfShapeNames.add(ShapeNames.TRIANGE);
 
-        //TODO: Enclose it try block after writing custom Error handler
-        Random random = new Random();
-        int index = random.nextInt(listOfShapeNames.size());
-        return listOfShapeNames.get(index);
+        try {
+            Random random = new Random();
+            int index = random.nextInt(listOfShapeNames.size());
+            return listOfShapeNames.get(index);
+        }catch (Exception e){
+            throw new IndexOutOfBoundsException("Error in Main while picking the random shape from the list of shapes. "
+             + "Cause: " + e.toString());
+        }
     }
 
     private static Colors pickColor(){
@@ -77,10 +78,14 @@ public class Main {
         listOfColors.add(Colors.WHITE);
         listOfColors.add(Colors.YELLOW);
 
-        //TODO: Enclose it try block after writing custom Error handler
-        Random random = new Random();
-        int index = random.nextInt(listOfColors.size());
-        return listOfColors.get(index);
+        try {
+            Random random = new Random();
+            int index = random.nextInt(listOfColors.size());
+            return listOfColors.get(index);
+        }catch (Exception e){
+            throw new IndexOutOfBoundsException("Error in Main while picking the random color from the list of Colors. "
+                    + "Cause: " + e.toString());
+        }
     }
 
 }
