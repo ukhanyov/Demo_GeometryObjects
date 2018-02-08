@@ -31,35 +31,32 @@ public class GeometryObjectFactory {
     }
 
     private static Circle crateCircle(Colors color){
-        double generatedRadius = ThreadLocalRandom.current().nextDouble(0.000001,
-                Constants.CONSTANT_MAXIMAL_CIRCLE_RADIUS);
+        double generatedRadius = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_CIRCLE_RADIUS,
+                Constants.CONSTANT_MAX_CIRCLE_RADIUS);
         return new Circle(generatedRadius, color);
     }
 
     private static Square createSquare(Colors color){
-        double generatedSide = ThreadLocalRandom.current().nextDouble(0.000001,
-                Constants.CONSTANT_MAXIMAL_SQUARE_SIDE);
+        double generatedSide = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_SQUARE_SIDE,
+                Constants.CONSTANT_MAX_SQUARE_SIDE);
         return new Square(generatedSide, color);
     }
 
     private static Trapezoid createTrapezoid(Colors color){
-        double baseMinimum = 0.000001;
 
-        double generatedSmallBase = ThreadLocalRandom.current().nextDouble(0.000001,
-                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
-        double generatedLeftSide = ThreadLocalRandom.current().nextDouble(generatedSmallBase,
-                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
-        double generatedRightSide = ThreadLocalRandom.current().nextDouble(generatedSmallBase,
-                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
+        double generatedSmallBase = ThreadLocalRandom.current().nextDouble(
+                Constants.CONSTANT_MIN_TRAPEZOID_SIDE,
+                Constants.CONSTANT_MAX_TRAPEZOID_SIDE);
+        double generatedLeftSide = ThreadLocalRandom.current().nextDouble(
+                Constants.CONSTANT_MIN_TRAPEZOID_SIDE,
+                generatedSmallBase);
+        double generatedRightSide = ThreadLocalRandom.current().nextDouble(
+                Constants.CONSTANT_MIN_TRAPEZOID_SIDE,
+                generatedSmallBase);
 
-        if(generatedLeftSide > generatedRightSide){
-            baseMinimum = generatedLeftSide;
-        }else {
-            baseMinimum = generatedRightSide;
-        }
 
-        double generatedBigBase = ThreadLocalRandom.current().nextDouble(baseMinimum,
-                Constants.CONSTANT_MAXIMAL_TRAPEZOID_SIDE);
+        double generatedBigBase = ThreadLocalRandom.current().nextDouble(generatedSmallBase,
+                Constants.CONSTANT_MAX_TRAPEZOID_SIDE);
         return new Trapezoid(generatedBigBase,
                 generatedSmallBase,
                 generatedLeftSide,
@@ -68,13 +65,13 @@ public class GeometryObjectFactory {
     }
 
     private static Triangle createTriangle(Colors color){
-        double baseMinimum = 0.000001;
-        double baseMaximum = Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE;
+        double baseMinimum = Constants.CONSTANT_MIN_TRIANGLE_SIDE;
+        double baseMaximum = Constants.CONSTANT_MAX_TRIANGLE_SIDE;
 
-        double generatedCathetusOne = ThreadLocalRandom.current().nextDouble(0.000001,
-                Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE);
-        double generatedCathetusTwo = ThreadLocalRandom.current().nextDouble(0.000001,
-                Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE);
+        double generatedCathetusOne = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_TRIANGLE_SIDE,
+                Constants.CONSTANT_MAX_TRIANGLE_SIDE);
+        double generatedCathetusTwo = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_TRIANGLE_SIDE,
+                Constants.CONSTANT_MAX_TRIANGLE_SIDE);
 
         if(generatedCathetusOne > generatedCathetusTwo){
             baseMinimum = generatedCathetusOne;
@@ -82,7 +79,7 @@ public class GeometryObjectFactory {
             baseMinimum = generatedCathetusTwo;
         }
 
-        if(generatedCathetusOne + generatedCathetusTwo < Constants.CONSTANT_MAXIMAL_TRIANGLE_SIDE){
+        if(generatedCathetusOne + generatedCathetusTwo < Constants.CONSTANT_MAX_TRIANGLE_SIDE){
             baseMaximum = generatedCathetusOne + generatedCathetusTwo;
         }
 

@@ -1,14 +1,10 @@
 import shapes.GeometryObject;
-import utils.Colors;
-import utils.ShapeNames;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.*;
 
 public class UserInterface extends JPanel implements ListSelectionListener {
