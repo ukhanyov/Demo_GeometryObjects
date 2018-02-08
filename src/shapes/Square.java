@@ -15,12 +15,12 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
 
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
-    private String mName;
+    private ShapeNames mName;
 
     Square(double side, Colors color) {
         this.mSide = side;
         this.mColor = color;
-        this.mName = ShapeNames.SQUARE.toString();
+        this.mName = ShapeNames.SQUARE;
 
         this.sidesOfTheShape.add(mSide);
 
@@ -90,11 +90,11 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mPerimeter = mPerimeter;
     }
 
-    public String getmName() {
+    public ShapeNames getmName() {
         return mName;
     }
 
-    protected void setmName(String mName) {
+    protected void setmName(ShapeNames mName) {
         this.mName = mName;
     }
 

@@ -16,7 +16,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
-    private String mName;
+    private ShapeNames mName;
 
     private double mHeight;
 
@@ -28,7 +28,7 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mSmallBase = mSmallBase;
         this.mLeftSide = mLeftSide;
         this.mRightSide = mRightSide;
-        this.mName = ShapeNames.TRAPEZOID.toString();
+        this.mName = ShapeNames.TRAPEZOID;
 
         this.sidesOfTheShape.add(mBigBase);
         this.sidesOfTheShape.add(mSmallBase);
@@ -148,11 +148,11 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         return mHeight;
     }
 
-    public String getmName() {
+    public ShapeNames getmName() {
         return mName;
     }
 
-    protected void setmName(String mName) {
+    protected void setmName(ShapeNames mName) {
         this.mName = mName;
     }
 

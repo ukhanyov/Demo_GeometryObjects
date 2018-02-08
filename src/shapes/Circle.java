@@ -14,7 +14,7 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
-    private String mName;
+    private ShapeNames mName;
 
     private double mLengthOfCircumference;
 
@@ -22,7 +22,7 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mColor = color;
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
-        this.mName = ShapeNames.CIRCLE.toString();
+        this.mName = ShapeNames.CIRCLE;
 
         this.sidesOfTheShape.add(mRadius);
 
@@ -88,11 +88,11 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mLengthOfCircumference = mLengthOfCircumference;
     }
 
-    public String getmName() {
+    public ShapeNames getmName() {
         return mName;
     }
 
-    protected void setmName(String mName) {
+    protected void setmName(ShapeNames mName) {
         this.mName = mName;
     }
 

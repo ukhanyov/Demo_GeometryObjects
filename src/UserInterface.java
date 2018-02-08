@@ -1,5 +1,6 @@
 import shapes.GeometryObject;
 import utils.Colors;
+import utils.ShapeNames;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -100,11 +101,14 @@ public class UserInterface extends JPanel implements ListSelectionListener {
     public class Bubble extends JPanel {
 
         private int mAxis = 100;
+        private GeometryObject mGeometryObject;
 
         public Bubble(GeometryObject geometryObject) {
 
-            setBackground(darken(getColorFromGeometryObject(geometryObject), 0.0000001f));
+            mGeometryObject = geometryObject;
+            setBackground(darken(getColorFromGeometryObject(mGeometryObject), 0.0000001f));
             setOpaque(false);
+
         }
 
         @Override
@@ -133,11 +137,24 @@ public class UserInterface extends JPanel implements ListSelectionListener {
             g2d.setPaint(lgp);
 
             //TODO: Add a switch statement for drawing different shapes based on amount of input sides or names
-
-
-
-            g2d.fill(new Rectangle2D.Double(50, 10, mAxis, mAxis));
-            //g2d.fill(new Ellipse2D.Double(x, y, 150, 150));
+            switch (mGeometryObject.getmName()){
+                case CIRCLE:
+                    g2d.fill(new Ellipse2D.Double(50, 10, mGeometryObject.getSidesOfTheShape().get(0),
+                                                            mGeometryObject.getSidesOfTheShape().get(0)));
+                    break;
+                case SQUARE:
+                    g2d.fill(new Rectangle2D.Double(50, 10, mGeometryObject.getSidesOfTheShape().get(0),
+                                                                    mGeometryObject.getSidesOfTheShape().get(0)));
+                    break;
+                case TRAPEZOID:
+                    throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
+                    //break;
+                case TRIANGE:
+                    throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
+                    //break;
+                default:
+                    throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
+            }
 
         }
 

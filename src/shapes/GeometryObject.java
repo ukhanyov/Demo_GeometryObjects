@@ -1,13 +1,14 @@
 package shapes;
 
 import utils.Colors;
+import utils.ShapeNames;
 
 import java.util.List;
 
 public class GeometryObject {
 
     Colors mColor;
-    String mName;
+    ShapeNames mName;
     double mArea;
 
     List<Double> sidesOfTheShape;
@@ -31,11 +32,11 @@ public class GeometryObject {
         this.mArea = mArea;
     }
 
-    public String getmName() {
+    public ShapeNames getmName() {
         return mName;
     }
 
-    protected void setmName(String mName) {
+    protected void setmName(ShapeNames mName) {
         this.mName = mName;
     }
 

@@ -15,7 +15,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
 
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
-    private String mName;
+    private ShapeNames mName;
 
     private double mBase;
 
@@ -27,7 +27,7 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideA = mSideA;
         this.mSideB = mSideB;
         this.mSideC = mSideC;
-        this.mName = ShapeNames.TRIANGE.toString();
+        this.mName = ShapeNames.TRIANGE;
 
         this.sidesOfTheShape.add(mSideA);
         this.sidesOfTheShape.add(mSideB);
@@ -153,11 +153,11 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mPerimeter = mPerimeter;
     }
 
-    public String getmName() {
+    public ShapeNames getmName() {
         return mName;
     }
 
-    protected void setmName(String mName) {
+    protected void setmName(ShapeNames mName) {
         this.mName = mName;
     }
 
