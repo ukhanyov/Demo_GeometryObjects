@@ -1,3 +1,6 @@
+import shapes.GeometryObject;
+import utils.Colors;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
@@ -6,6 +9,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 public class UserInterface extends JPanel implements ListSelectionListener {
+
     private JList<String> list;
     private DefaultListModel<String> listModel;
 
@@ -84,8 +88,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
             infoSelectedTextField.setText(Main.listOfGeneratedShapes.get(index).toString());
 
             drawingAreaJPanel.removeAll();
-
-            drawingAreaJPanel.add(new Bubble(Color.BLUE, 100));
+            drawingAreaJPanel.add(new Bubble(Main.listOfGeneratedShapes.get(index)));
 
         }
 
@@ -96,12 +99,11 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
     public class Bubble extends JPanel {
 
-        private int mAxis;
+        private int mAxis = 100;
 
-        public Bubble(Color color, int axis) {
+        public Bubble(GeometryObject geometryObject) {
 
-            this.mAxis = axis;
-            setBackground(darken(color, 0.3f));
+            setBackground(darken(getColorFromGeometryObject(geometryObject), 0.0000001f));
             setOpaque(false);
         }
 
@@ -116,7 +118,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
             Graphics2D g2d = (Graphics2D) g.create();
 
             // Getting the color
-            Color startColor = brighten(getBackground(), 0.05f);
+            Color startColor = brighten(getBackground(), 0.0000001f);
             Color endColor = getBackground();
 
             // Painting into the color
@@ -134,7 +136,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
 
 
-            //g2d.fill(new Rectangle2D.Double(80, 10, mAxis, mAxis));
+            g2d.fill(new Rectangle2D.Double(50, 10, mAxis, mAxis));
             //g2d.fill(new Ellipse2D.Double(x, y, 150, 150));
 
         }
@@ -157,5 +159,28 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         return new Color(red, green, blue, alpha);
     }
 
+    private Color getColorFromGeometryObject(GeometryObject geometryObject){
+
+        switch (geometryObject.getmColor()){
+            case BLACK:
+                return Color.BLACK;
+            case GREEN:
+                return Color.GREEN;
+            case BLUE:
+                return Color.BLUE;
+            case YELLOW:
+                return Color.YELLOW;
+            case GREY:
+                return Color.GRAY;
+            case WHITE:
+                return Color.WHITE;
+            case RED:
+                return Color.RED;
+            case ORANGE:
+                return Color.ORANGE;
+        }
+
+        return null;
+    }
 
 }

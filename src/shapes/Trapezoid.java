@@ -1,5 +1,7 @@
 package shapes;
 
+import utils.Colors;
+import utils.ShapeNames;
 import utils.TrapezoidPropertiesCalculations;
 
 import java.util.ArrayList;
@@ -20,13 +22,13 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     private double mPerimeter;
 
-    Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, String color, String name) {
+    Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, Colors color) {
         this.mColor = color;
         this.mBigBase = mBigBase;
         this.mSmallBase = mSmallBase;
         this.mLeftSide = mLeftSide;
         this.mRightSide = mRightSide;
-        this.mName = name;
+        this.mName = ShapeNames.TRAPEZOID.toString();
 
         this.sidesOfTheShape.add(mBigBase);
         this.sidesOfTheShape.add(mSmallBase);

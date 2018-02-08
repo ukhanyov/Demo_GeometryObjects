@@ -1,5 +1,7 @@
 package shapes;
 
+import utils.Colors;
+import utils.ShapeNames;
 import utils.TrianglePropertiesCalculations;
 
 import java.util.ArrayList;
@@ -20,12 +22,12 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     private double mPerimeter;
 
 
-    Triangle(double mSideA, double mSideB, double mSideC, String color, String name) {
+    Triangle(double mSideA, double mSideB, double mSideC, Colors color) {
         this.mColor = color;
         this.mSideA = mSideA;
         this.mSideB = mSideB;
         this.mSideC = mSideC;
-        this.mName = name;
+        this.mName = ShapeNames.TRIANGE.toString();
 
         this.sidesOfTheShape.add(mSideA);
         this.sidesOfTheShape.add(mSideB);

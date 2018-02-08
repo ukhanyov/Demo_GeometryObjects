@@ -49,7 +49,7 @@ public class Main {
 
         //Display the window.
         //frame.pack();
-        frame.setSize(450, 450);
+        frame.setSize(400, 400);
         frame.setVisible(true);
     }
 
@@ -66,15 +66,13 @@ public class Main {
         return listOfShapeNames.get(index);
     }
 
-    private static String pickColor(){
+    private static Colors pickColor(){
         List<Colors> listOfColors = new ArrayList<>();
         listOfColors.add(Colors.BLACK);
         listOfColors.add(Colors.BLUE);
-        listOfColors.add(Colors.BROWN);
         listOfColors.add(Colors.GREEN);
         listOfColors.add(Colors.GREY);
         listOfColors.add(Colors.ORANGE);
-        listOfColors.add(Colors.PURPLE);
         listOfColors.add(Colors.RED);
         listOfColors.add(Colors.WHITE);
         listOfColors.add(Colors.YELLOW);
@@ -82,7 +80,7 @@ public class Main {
         //TODO: Enclose it try block after writing custom Error handler
         Random random = new Random();
         int index = random.nextInt(listOfColors.size());
-        return listOfColors.get(index).toString();
+        return listOfColors.get(index);
     }
 
 }

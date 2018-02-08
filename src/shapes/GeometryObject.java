@@ -1,10 +1,12 @@
 package shapes;
 
+import utils.Colors;
+
 import java.util.List;
 
 public class GeometryObject {
 
-    String mColor;
+    Colors mColor;
     String mName;
     double mArea;
 
@@ -13,11 +15,11 @@ public class GeometryObject {
     GeometryObject() {
     }
 
-    public String getmColor() {
+    public Colors getmColor() {
         return mColor;
     }
 
-    protected void setmColor(String mColor) {
+    protected void setmColor(Colors mColor) {
         this.mColor = mColor;
     }
 
@@ -41,7 +43,7 @@ public class GeometryObject {
         return sidesOfTheShape;
     }
 
-    protected void setSidesOfTheShape(List<Double> sidesOfTheSpape) {
-        this.sidesOfTheShape = sidesOfTheSpape;
+    protected void setSidesOfTheShape(List<Double> sidesOfTheShape) {
+        this.sidesOfTheShape = sidesOfTheShape;
     }
 }

@@ -1,6 +1,8 @@
 package shapes;
 
 import utils.CirclePropertiesCalculations;
+import utils.Colors;
+import utils.ShapeNames;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +18,11 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     private double mLengthOfCircumference;
 
-    Circle(double radius, String color, String name) {
+    Circle(double radius, Colors color) {
         this.mColor = color;
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
-        this.mName = name;
+        this.mName = ShapeNames.CIRCLE.toString();
 
         this.sidesOfTheShape.add(mRadius);
 

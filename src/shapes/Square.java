@@ -1,5 +1,7 @@
 package shapes;
 
+import utils.Colors;
+import utils.ShapeNames;
 import utils.SquarePropertiesCalculations;
 
 import java.util.ArrayList;
@@ -15,10 +17,10 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
 
     private String mName;
 
-    Square(double side, String color, String name) {
+    Square(double side, Colors color) {
         this.mSide = side;
         this.mColor = color;
-        this.mName = name;
+        this.mName = ShapeNames.SQUARE.toString();
 
         this.sidesOfTheShape.add(mSide);
 

@@ -1,5 +1,6 @@
 package shapes;
 
+import utils.Colors;
 import utils.ShapeNames;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,19 +18,19 @@ public class GeometryObjectFactory {
     private GeometryObjectFactory() {
     }
 
-    public static GeometryObject generateShape(ShapeNames key, String color){
+    public static GeometryObject generateShape(ShapeNames key, Colors color){
         switch (key){
             case CIRCLE:
-                return crateCircle(color, key.toString());
+                return crateCircle(color);
 
             case SQUARE:
-                return createSquare(color, key.toString());
+                return createSquare(color);
 
             case TRIANGE:
-                return createTriangle(color, key.toString());
+                return createTriangle(color);
 
             case TRAPEZOID:
-                return createTrapezoid(color, key.toString());
+                return createTrapezoid(color);
 
             default:
                 //TODO: Insert Error handler message
@@ -38,17 +39,17 @@ public class GeometryObjectFactory {
         return null;
     }
 
-    private static Circle crateCircle(String color, String name){
+    private static Circle crateCircle(Colors color){
         double generatedRadius = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_CIRCLE_RADIUS);
-        return new Circle(generatedRadius, color, name);
+        return new Circle(generatedRadius, color);
     }
 
-    private static Square createSquare(String color, String name){
+    private static Square createSquare(Colors color){
         double generatedSide = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_SQUARE_SIDE_LENGTH);
-        return new Square(generatedSide, color, name);
+        return new Square(generatedSide, color);
     }
 
-    private static Trapezoid createTrapezoid(String color, String name){
+    private static Trapezoid createTrapezoid(Colors color){
         double baseMinimum = 0.000001;
 
         double generatedSmallBase = ThreadLocalRandom.current().nextDouble(0.000001, MAXIMAL_TRAPEZOID_SIDE_LENGTH);
@@ -69,11 +70,10 @@ public class GeometryObjectFactory {
                 generatedSmallBase,
                 generatedLeftSide,
                 generatedRightSide,
-                color,
-                name);
+                color);
     }
 
-    private static Triangle createTriangle(String color, String name){
+    private static Triangle createTriangle(Colors color){
         double baseMinimum = 0.000001;
         double baseMaximum = MAXIMAL_TRIANGLE_SIDE_LENGTH;
 
@@ -95,7 +95,6 @@ public class GeometryObjectFactory {
         return new Triangle(generatedBase,
                                 generatedCathetusOne,
                                 generatedCathetusTwo,
-                                color,
-                                name);
+                                color);
     }
 }
