@@ -149,20 +149,43 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                                                                     mGeometryObject.getSidesOfTheShape().get(0)));
                     break;
                 case TRAPEZOID:
+                    double bigBase = mGeometryObject.getSidesOfTheShape().get(0);
+                    double smallBase = mGeometryObject.getSidesOfTheShape().get(1);
+                    double leftSide = mGeometryObject.getSidesOfTheShape().get(2);
+                    double rightSide = mGeometryObject.getSidesOfTheShape().get(3);
+                    double height = Math.sqrt(((bigBase + leftSide - smallBase + rightSide)*
+                            (-bigBase + leftSide + smallBase + rightSide)*
+                            (bigBase - leftSide - smallBase + rightSide)*
+                            (bigBase + leftSide - smallBase - rightSide)) /
+                            (4 * Math.pow((bigBase - smallBase),2)));
 
-//                    int x1Points[] = {0, 100, 70, 30};
-//                    int y1Points[] = {0, 0, 70, 70};
-//                    GeneralPath polygon =
-//                            new GeneralPath(GeneralPath.WIND_EVEN_ODD,
-//                                    x1Points.length);
-//                    polygon.moveTo(x1Points[0], y1Points[0]);
-//
-//                    for (int index = 1; index < x1Points.length; index++) {
-//                        polygon.lineTo(x1Points[index], y1Points[index]);
-//                    }
-//
-//                    polygon.closePath();
-//                    g2d.fill(polygon);
+                    double leftSubBase = Math.sqrt(Math.pow(leftSide, 2) - Math.pow(height, 2));
+                    double middleSubBase = leftSubBase + smallBase;
+                    double diagonal = Math.sqrt(Math.pow(middleSubBase, 2) + Math.pow(height, 2));
+
+                    double a_1 = bigBase;
+                    double b_1 = diagonal;
+                    double c_1 = rightSide;
+                    double x_1 = (b_1*b_1 + a_1*a_1 - c_1*c_1)/(2*a_1);
+                    double y_1 = Math.abs(Math.sqrt(Math.pow(b_1, 2) - Math.pow(x_1, 2)));
+
+                    double a_2 = leftSubBase;
+                    double b_2 = leftSide;
+                    double c_2 = height;
+                    double x_2 = (b_2*b_2 + a_2*a_2 - c_2*c_2)/(2*a_2);
+                    double y_2 = Math.abs(Math.sqrt(Math.pow(b_2, 2) - Math.pow(x_2, 2)));
+
+                    double x1Points[] = {0, a_1, x_1, x_2};
+                    double y1Points[] = {0, 0, y_1, y_2};
+                    GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x1Points.length);
+                    polygon.moveTo(x1Points[0], y1Points[0]);
+
+                    for (int index = 1; index < x1Points.length; index++) {
+                        polygon.lineTo(x1Points[index], y1Points[index]);
+                    }
+
+                    polygon.closePath();
+                    g2d.fill(polygon);
 
                     break;
                 case TRIANGE:
