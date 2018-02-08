@@ -115,7 +115,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
         @Override
         public Dimension getPreferredSize() {
-            return new Dimension(150, 150);
+            return new Dimension(300, 300);
         }
 
         @Override
@@ -124,9 +124,6 @@ public class UserInterface extends JPanel implements ListSelectionListener {
             Graphics2D g2d = (Graphics2D) g.create();
 
             g2d.setPaint(getColorFromGeometryObject(mGeometryObject));
-
-            int widthJPanel = (getWidth()) / 2;
-            int heightJPanel = (getHeight()) / 2;
 
             switch (mGeometryObject.getmName()) {
                 case CIRCLE:
@@ -168,14 +165,17 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     double x_2 = (b_2 * b_2 + a_2 * a_2 - c_2 * c_2) / (2 * a_2);
                     double y_2 = Math.abs(Math.sqrt(Math.pow(b_2, 2) - Math.pow(x_2, 2)));
 
-                    double x1Points[] = {0, a_1, x_1, x_2};
-                    double y1Points[] = {0, 0, y_1, y_2};
+                    double widthTrap = (getWidth() + bigBase) / 2;
+                    double heightTrap = (getHeight() + bigBase) / 2;
+
+                    double x1Points[] = {widthTrap + 0, widthTrap - a_1, widthTrap - x_1, widthTrap - x_2};
+                    double y1Points[] = {heightTrap + 0, heightTrap + 0, heightTrap - y_1, heightTrap - y_2};
+
                     GeneralPath polygon = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x1Points.length);
                     polygon.moveTo(x1Points[0], y1Points[0]);
-
-                    for (int index = 1; index < x1Points.length; index++) {
-                        polygon.lineTo(x1Points[index], y1Points[index]);
-                    }
+                    polygon.lineTo(x1Points[1], y1Points[1]);
+                    polygon.lineTo(x1Points[2], y1Points[2]);
+                    polygon.lineTo(x1Points[3], y1Points[3]);
 
                     polygon.closePath();
                     g2d.fill(polygon);
@@ -214,9 +214,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                 default:
                     throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
             }
-
         }
-
     }
 
     private Color getColorFromGeometryObject(GeometryObject geometryObject) {

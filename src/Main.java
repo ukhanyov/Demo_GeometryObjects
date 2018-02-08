@@ -46,7 +46,7 @@ public class Main {
 
         //Display the window.
         //frame.pack();
-        frame.setSize(400, 400);
+        frame.setSize(600, 600);
         frame.setVisible(true);
     }
 
