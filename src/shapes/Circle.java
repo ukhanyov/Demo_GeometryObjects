@@ -2,10 +2,15 @@ package shapes;
 
 import utils.CirclePropertiesCalculations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Circle extends GeometryObject implements CirclePropertiesCalculations{
 
     private double mRadius;
     private double mDiameter;
+
+    private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private String mName;
 
@@ -16,6 +21,8 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
         this.mRadius = radius;
         this.mDiameter = 2 * mRadius;
         this.mName = name;
+
+        this.sidesOfTheShape.add(mRadius);
 
         areTheNumbersRight();
         makeCalculations();
@@ -85,5 +92,15 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
 
     protected void setmName(String mName) {
         this.mName = mName;
+    }
+
+    @Override
+    public List<Double> getSidesOfTheShape() {
+        return sidesOfTheShape;
+    }
+
+    @Override
+    protected void setSidesOfTheShape(List<Double> sidesOfTheShape) {
+        this.sidesOfTheShape = sidesOfTheShape;
     }
 }

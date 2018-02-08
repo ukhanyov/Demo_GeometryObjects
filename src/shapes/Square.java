@@ -2,11 +2,16 @@ package shapes;
 
 import utils.SquarePropertiesCalculations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Square extends GeometryObject implements SquarePropertiesCalculations {
 
     private double mSide;
     private double mDiagonal;
     private double mPerimeter;
+
+    private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private String mName;
 
@@ -14,6 +19,8 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
         this.mSide = side;
         this.mColor = color;
         this.mName = name;
+
+        this.sidesOfTheShape.add(mSide);
 
         areTheNumbersRight();
         makeCalculations();
@@ -87,5 +94,15 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
 
     protected void setmName(String mName) {
         this.mName = mName;
+    }
+
+    @Override
+    public List<Double> getSidesOfTheShape() {
+        return sidesOfTheShape;
+    }
+
+    @Override
+    protected void setSidesOfTheShape(List<Double> sidesOfTheShape) {
+        this.sidesOfTheShape = sidesOfTheShape;
     }
 }

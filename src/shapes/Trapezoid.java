@@ -2,12 +2,17 @@ package shapes;
 
 import utils.TrapezoidPropertiesCalculations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalculations {
 
     private double mBigBase;
     private double mSmallBase;
     private double mLeftSide;
     private double mRightSide;
+
+    private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private String mName;
 
@@ -22,6 +27,11 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
         this.mLeftSide = mLeftSide;
         this.mRightSide = mRightSide;
         this.mName = name;
+
+        this.sidesOfTheShape.add(mBigBase);
+        this.sidesOfTheShape.add(mSmallBase);
+        this.sidesOfTheShape.add(mLeftSide);
+        this.sidesOfTheShape.add(mRightSide);
 
         areTheNumbersRight();
         makeCalculations();
@@ -142,5 +152,15 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
 
     protected void setmName(String mName) {
         this.mName = mName;
+    }
+
+    @Override
+    public List<Double> getSidesOfTheShape() {
+        return sidesOfTheShape;
+    }
+
+    @Override
+    protected void setSidesOfTheShape(List<Double> sidesOfTheShape) {
+        this.sidesOfTheShape = sidesOfTheShape;
     }
 }

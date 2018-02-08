@@ -2,11 +2,16 @@ package shapes;
 
 import utils.TrianglePropertiesCalculations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Triangle extends GeometryObject implements TrianglePropertiesCalculations{
 
     private double mSideA;
     private double mSideB;
     private double mSideC;
+
+    private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private String mName;
 
@@ -21,6 +26,10 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
         this.mSideB = mSideB;
         this.mSideC = mSideC;
         this.mName = name;
+
+        this.sidesOfTheShape.add(mSideA);
+        this.sidesOfTheShape.add(mSideB);
+        this.sidesOfTheShape.add(mSideC);
 
         identifyBase();
 
@@ -148,5 +157,15 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
 
     protected void setmName(String mName) {
         this.mName = mName;
+    }
+
+    @Override
+    public List<Double> getSidesOfTheShape() {
+        return sidesOfTheShape;
+    }
+
+    @Override
+    protected void setSidesOfTheShape(List<Double> sidesOfTheShape) {
+        this.sidesOfTheShape = sidesOfTheShape;
     }
 }

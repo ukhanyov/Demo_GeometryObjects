@@ -85,7 +85,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
             drawingAreaJPanel.removeAll();
 
-            drawingAreaJPanel.add(new Bubble());
+            drawingAreaJPanel.add(new Bubble(Color.BLUE, 100));
 
         }
 
@@ -96,9 +96,12 @@ public class UserInterface extends JPanel implements ListSelectionListener {
 
     public class Bubble extends JPanel {
 
-        public Bubble() {
+        private int mAxis;
 
-            setBackground(darken(Color.RED, 0.3f));
+        public Bubble(Color color, int axis) {
+
+            this.mAxis = axis;
+            setBackground(darken(color, 0.3f));
             setOpaque(false);
         }
 
@@ -127,7 +130,11 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     new Color[]{startColor, endColor});
             g2d.setPaint(lgp);
 
-            g2d.fill(new Rectangle2D.Double(80, 10, 100, 100));
+            //TODO: Add a switch statement for drawing different shapes based on amount of input sides or names
+
+
+
+            //g2d.fill(new Rectangle2D.Double(80, 10, mAxis, mAxis));
             //g2d.fill(new Ellipse2D.Double(x, y, 150, 150));
 
         }
