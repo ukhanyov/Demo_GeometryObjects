@@ -5,6 +5,7 @@ import utils.ShapeNames;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -136,22 +137,57 @@ public class UserInterface extends JPanel implements ListSelectionListener {
                     new Color[]{startColor, endColor});
             g2d.setPaint(lgp);
 
-            //TODO: Add a switch statement for drawing different shapes based on amount of input sides or names
+
+
             switch (mGeometryObject.getmName()){
                 case CIRCLE:
-                    g2d.fill(new Ellipse2D.Double(50, 10, mGeometryObject.getSidesOfTheShape().get(0),
+                    g2d.fill(new Ellipse2D.Double(0, 0, mGeometryObject.getSidesOfTheShape().get(0),
                                                             mGeometryObject.getSidesOfTheShape().get(0)));
                     break;
                 case SQUARE:
-                    g2d.fill(new Rectangle2D.Double(50, 10, mGeometryObject.getSidesOfTheShape().get(0),
+                    g2d.fill(new Rectangle2D.Double(0, 0, mGeometryObject.getSidesOfTheShape().get(0),
                                                                     mGeometryObject.getSidesOfTheShape().get(0)));
                     break;
                 case TRAPEZOID:
-                    throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
-                    //break;
+
+//                    int x1Points[] = {0, 100, 70, 30};
+//                    int y1Points[] = {0, 0, 70, 70};
+//                    GeneralPath polygon =
+//                            new GeneralPath(GeneralPath.WIND_EVEN_ODD,
+//                                    x1Points.length);
+//                    polygon.moveTo(x1Points[0], y1Points[0]);
+//
+//                    for (int index = 1; index < x1Points.length; index++) {
+//                        polygon.lineTo(x1Points[index], y1Points[index]);
+//                    }
+//
+//                    polygon.closePath();
+//                    g2d.fill(polygon);
+
+                    break;
                 case TRIANGE:
-                    throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
-                    //break;
+                    double a = mGeometryObject.getSidesOfTheShape().get(0);
+                    double b = mGeometryObject.getSidesOfTheShape().get(1);
+                    double c = mGeometryObject.getSidesOfTheShape().get(2);
+
+
+                    double xT = (b*b + a*a - c*c)/(2*a);
+                    double yT = Math.abs(Math.sqrt(Math.pow(b, 2) - Math.pow(xT, 2)));
+
+                    double x1Points1[] = {0, a, xT};
+                    double y1Points1[] = {0, 0, yT};
+
+                    GeneralPath polygon1 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x1Points1.length);
+                    polygon1.moveTo(x1Points1[0], y1Points1[0]);
+
+                    for (int index = 1; index < x1Points1.length; index++) {
+                        polygon1.lineTo(x1Points1[index], y1Points1[index]);
+                    }
+
+                    polygon1.closePath();
+                    g2d.fill(polygon1);
+
+                    break;
                 default:
                     throw new IllegalArgumentException("There is an error in the reading class name when drawing a shape");
             }
