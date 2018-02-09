@@ -13,15 +13,21 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
     private double mSideB;
     private double mSideC;
 
+    // A list of available side(s) of the created shape object
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private ShapeNames mName;
 
     private double mBase;
-
     private double mPerimeter;
 
-
+    /** Create Triangle, derived from GeometryObject
+     *
+     * @param mSideA First side of a triangle
+     * @param mSideB Second side of a triangle
+     * @param mSideC Third side of a triangle
+     * @param color Color of a triangle
+     */
     Triangle(double mSideA, double mSideB, double mSideC, Colors color) {
         this.mColor = color;
         this.mSideA = mSideA;
@@ -73,6 +79,9 @@ public class Triangle extends GeometryObject implements TrianglePropertiesCalcul
                 (float)getmPerimeter(), (float)getmArea(), (float)getmBase());
     }
 
+    /** Checks, if the numbers are ok, allowing to proceed with creation of desirable object
+     *
+     */
     private void areTheNumbersRight(){
 
         if(mSideA + mSideB <= mSideC){

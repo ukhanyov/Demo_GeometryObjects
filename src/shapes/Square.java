@@ -13,10 +13,16 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
     private double mDiagonal;
     private double mPerimeter;
 
+    // A list of available side(s) of the created shape object
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private ShapeNames mName;
 
+    /** Create Square, derived from GeometryObject
+     *
+     * @param side A side of a square
+     * @param color A color of a square
+     */
     Square(double side, Colors color) {
         this.mSide = side;
         this.mColor = color;
@@ -54,12 +60,18 @@ public class Square extends GeometryObject implements SquarePropertiesCalculatio
                 (float)getmSide(), (float) getmDiagonal(), (float) getmPerimeter(), (float) getmArea());
     }
 
+    /** All geometry related calculations are made here
+     *
+     */
     public void makeCalculations(){
         calculateDiagonal();
         calculatePerimeter();
         calculateArea();
     }
 
+    /** Checks, if the numbers are ok, allowing to proceed with creation of desirable object
+     *
+     */
     private void areTheNumbersRight(){
         if(mSide <= 0){
             throw new IllegalArgumentException();

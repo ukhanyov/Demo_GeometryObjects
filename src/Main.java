@@ -1,6 +1,7 @@
 import shapes.GeometryObject;
 import shapes.GeometryObjectFactory;
 import utils.Colors;
+import utils.Constants;
 import utils.ShapeNames;
 
 import javax.swing.*;
@@ -10,29 +11,26 @@ import java.util.Random;
 
 public class Main {
 
-    //private static UI mUserInterface;
-
     static List<GeometryObject> listOfGeneratedShapes = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 100; i++){
+        // Populating the list with geometry ob'jects
+        for (int i = 0; i < Constants.NUMBER_OF_SHAPES_TO_CREATE; i++){
             listOfGeneratedShapes.add(GeometryObjectFactory.generateShape(pickTheShape(), pickColor()));
         }
 
+        // Output to the console
         for (GeometryObject item : listOfGeneratedShapes){
             System.out.println(item.toString() + "\n");
         }
-
-        //mUserInterface = new UI();
 
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(Main::createAndShowGUI);
     }
 
-    /**
-     * Create the GUI and show it.
+    /**Create the GUI and show it.
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
@@ -45,11 +43,14 @@ public class Main {
         frame.setContentPane(newContentPane);
 
         //Display the window.
-        //frame.pack();
         frame.setSize(600, 600);
         frame.setVisible(true);
     }
 
+    /** Pics a random shape from the list of available shapes
+     *
+     * @return enum of picked Shape
+     */
     private static ShapeNames pickTheShape(){
         List<ShapeNames> listOfShapeNames = new ArrayList<>();
         listOfShapeNames.add(ShapeNames.CIRCLE);
@@ -67,6 +68,10 @@ public class Main {
         }
     }
 
+    /** Pics a random color from the list of available shapes
+     *
+     * @return enum of picked color
+     */
     private static Colors pickColor(){
         List<Colors> listOfColors = new ArrayList<>();
         listOfColors.add(Colors.BLACK);

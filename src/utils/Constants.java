@@ -12,6 +12,8 @@ public class Constants {
     public static final double CONSTANT_MIN_TRIANGLE_SIDE = 20;
     public static final double CONSTANT_MIN_TRAPEZOID_SIDE = 20;
 
+    public static final int NUMBER_OF_SHAPES_TO_CREATE = 100;
+
     private Constants() {}
 
 }

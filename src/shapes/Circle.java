@@ -12,12 +12,18 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
     private double mRadius;
     private double mDiameter;
 
+    // A list of available side(s) of the created shape object
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private ShapeNames mName;
 
     private double mLengthOfCircumference;
 
+    /** Create Circle, derived from GeometryObject
+     *
+     * @param radius A radius of a circle
+     * @param color A color of a circle
+     */
     Circle(double radius, Colors color) {
         this.mColor = color;
         this.mRadius = radius;
@@ -58,6 +64,9 @@ public class Circle extends GeometryObject implements CirclePropertiesCalculatio
                 (float)getmRadius(), (float)getmDiameter(), (float)getmArea(), (float)getmLengthOfCircumference());
     }
 
+    /** Checks, if the numbers are ok, allowing to proceed with creation of desirable object
+     *
+     */
     private void areTheNumbersRight(){
         if(mRadius <= 0){
             throw new IllegalArgumentException();

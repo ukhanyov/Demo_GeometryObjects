@@ -20,13 +20,13 @@ public class UserInterface extends JPanel implements ListSelectionListener {
     private JPanel drawingAreaJPanel;
 
     UserInterface() {
-
         super(new BorderLayout());
 
+        // Populating displayed list with auto generated shapes
         listModel = new DefaultListModel<>();
         for (int i = 0; i < Main.listOfGeneratedShapes.size(); i++) {
             listModel.addElement(Main.listOfGeneratedShapes.get(i).getmName() + " - " +
-                    Main.listOfGeneratedShapes.get(i).getmColor());
+                                Main.listOfGeneratedShapes.get(i).getmColor());
         }
 
         // Create the list and put it in a scroll pane.
@@ -51,7 +51,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         // Setting up drawing area
         drawingAreaJPanel = new JPanel();
 
-        //Create a panel that uses BoxLayout.
+        // Create a panel that uses BoxLayout.
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
         buttonPane.add(selectButton);
@@ -59,6 +59,7 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         buttonPane.add(selectedShapeLabel);
         buttonPane.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
+        // Create a panel that displays info of the shape, and it drawing
         JPanel infoAndDrawingPane = new JPanel();
         infoAndDrawingPane.setLayout(new BoxLayout(infoAndDrawingPane, BoxLayout.Y_AXIS));
         infoAndDrawingPane.add(infoSelectedTextField);
@@ -66,29 +67,26 @@ public class UserInterface extends JPanel implements ListSelectionListener {
         infoAndDrawingPane.add(drawingAreaJPanel);
         infoAndDrawingPane.setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
 
+        // Populate main panel
         add(listScrollPane, BorderLayout.LINE_START);
         add(buttonPane, BorderLayout.PAGE_END);
         add(infoAndDrawingPane, BorderLayout.CENTER);
-
     }
 
-    /**
-     * Handles action, when a Select button is pressed
+    /** Handles action, when a Select button is pressed
+     *
      */
-
-
     class SelectButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-
             int index = list.getSelectedIndex();
             selectedShapeLabel.setText(String.valueOf(index));
 
             infoSelectedTextField.setText(Main.listOfGeneratedShapes.get(index).toString());
 
+            // Draw selected shape
             drawingAreaJPanel.removeAll();
             drawingAreaJPanel.add(new Bubble(Main.listOfGeneratedShapes.get(index)));
-
         }
 
     }
@@ -97,16 +95,20 @@ public class UserInterface extends JPanel implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
     }
 
+    /** Panel, on which there will be drawing
+     *
+     */
     public class Bubble extends JPanel {
 
-        private int mAxis = 100;
         private GeometryObject mGeometryObject;
 
-        public Bubble(GeometryObject geometryObject) {
-
+        /** Constructs JPanel, on which to draw
+         *
+         * @param geometryObject Geometry object to draw
+         */
+        Bubble(GeometryObject geometryObject) {
             mGeometryObject = geometryObject;
             setOpaque(false);
-
         }
 
         @Override

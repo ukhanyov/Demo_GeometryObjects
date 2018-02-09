@@ -14,16 +14,24 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
     private double mLeftSide;
     private double mRightSide;
 
+    // A list of available side(s) of the created shape object
     private List<Double> sidesOfTheShape = new ArrayList<>();
 
     private ShapeNames mName;
 
     private double mHeight;
-
     private double mPerimeter;
 
+    /** Create Trapezoid, derived from GeometryObject
+     *
+     * @param mBigBase A bottom base of a trapezoid
+     * @param mSmallBase A top base of a trapezoid
+     * @param mLeftSide A left leg of a trapezoid
+     * @param mRightSide A right leg of a trapezoid
+     * @param color A color of a trapezoid
+     */
     Trapezoid(double mBigBase, double mSmallBase, double mLeftSide, double mRightSide, Colors color) {
-        //TODO: Check if the data is correct. Introduce some rules, and change data generation process
+
         this.mColor = color;
         this.mBigBase = mBigBase;
         this.mSmallBase = mSmallBase;
@@ -81,6 +89,9 @@ public class Trapezoid extends GeometryObject implements TrapezoidPropertiesCalc
                 (float)getmHeight(), (float)getmPerimeter(), (float)getmArea());
     }
 
+    /** Checks, if the numbers are ok, allowing to proceed with creation of desirable object
+     *
+     */
     private void areTheNumbersRight(){
         if(mBigBase < mSmallBase ||
                 mBigBase < mLeftSide ||

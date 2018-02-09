@@ -11,6 +11,12 @@ public class GeometryObjectFactory {
     private GeometryObjectFactory() {
     }
 
+    /** Handles creation of a GeometryObject
+     *
+     * @param key Object's shape
+     * @param color Object's color
+     * @return GeometryObject
+     */
     public static GeometryObject generateShape(ShapeNames key, Colors color){
         switch (key){
             case CIRCLE:
@@ -30,18 +36,33 @@ public class GeometryObjectFactory {
         }
     }
 
+    /** Handles creation of a Circle shape with random radius
+     *
+     * @param color Desired color of the shape
+     * @return Circle object
+     */
     private static Circle crateCircle(Colors color){
         double generatedRadius = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_CIRCLE_RADIUS,
                 Constants.CONSTANT_MAX_CIRCLE_RADIUS);
         return new Circle(generatedRadius, color);
     }
 
+    /** Handles creation of a Circle shape with random side length
+     *
+     * @param color Desired color of the shape
+     * @return Square object
+     */
     private static Square createSquare(Colors color){
         double generatedSide = ThreadLocalRandom.current().nextDouble(Constants.CONSTANT_MIN_SQUARE_SIDE,
                 Constants.CONSTANT_MAX_SQUARE_SIDE);
         return new Square(generatedSide, color);
     }
 
+    /** Handles creation of a Trapezoid shape with random sides length
+     *
+     * @param color Desired color of the shape
+     * @return Trapezoid object
+     */
     private static Trapezoid createTrapezoid(Colors color){
         double generatedSmallBase;
         double generatedLeftSide;
@@ -80,6 +101,11 @@ public class GeometryObjectFactory {
                 color);
     }
 
+    /** Handles creation of a Triangle shape with random sides length
+     *
+     * @param color Desired color of the shape
+     * @return Triangle object
+     */
     private static Triangle createTriangle(Colors color){
         double baseMinimum = Constants.CONSTANT_MIN_TRIANGLE_SIDE;
         double baseMaximum = Constants.CONSTANT_MAX_TRIANGLE_SIDE;
